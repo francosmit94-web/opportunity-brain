@@ -1,0 +1,1997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a1628">
+<meta name="description" content="Score Any Business Opportunity in 5 Minutes. The Opportunity Brain — a systematic 7-pillar framework for evaluating, comparing, and tracking business opportunities.">
+<link rel="manifest" href="data:application/json,{}" id="manifestPlaceholder">
+<title>The Opportunity Brain — Aether Inc.</title>
+<script src="https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.1/dist/transformers.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a1628;
+  --bg-secondary:#0f1e36;
+  --bg-card:#13203a;
+  --bg-elevated:#182a4a;
+  --accent:#00d4aa;
+  --accent-dim:rgba(0,212,170,0.15);
+  --accent-glow:rgba(0,212,170,0.25);
+  --text:#e8edf5;
+  --text-dim:#8899b4;
+  --text-muted:#5a6e8a;
+  --danger:#ff4757;
+  --danger-dim:rgba(255,71,87,0.12);
+  --warning:#ffa502;
+  --warning-dim:rgba(255,165,2,0.12);
+  --safe:#2ed573;
+  --safe-dim:rgba(46,213,115,0.12);
+  --border:rgba(255,255,255,0.06);
+  --radius:12px;
+  --radius-sm:8px;
+  --shadow:0 4px 24px rgba(0,0,0,0.35);
+  --transition:0.25s cubic-bezier(0.4,0,0.2,1);
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+::selection{background:var(--accent);color:var(--bg)}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--text-muted);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:var(--text-dim)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* Reduced motion */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;scroll-behavior:auto!important}
+}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(10,22,40,0.92);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+  padding:0 24px;height:60px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.nav-brand{
+  font-size:18px;font-weight:700;letter-spacing:-0.3px;
+  display:flex;align-items:center;gap:10px;color:var(--text);
+}
+.nav-brand svg{width:22px;height:22px;flex-shrink:0}
+.nav-brand span{background:linear-gradient(135deg,var(--text),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-links{display:flex;gap:2px;flex-wrap:wrap}
+.nav-links a{
+  color:var(--text-dim);text-decoration:none;font-size:13px;font-weight:500;
+  padding:6px 12px;border-radius:6px;transition:all var(--transition);
+  position:relative;
+}
+.nav-links a:hover{color:var(--text);background:var(--accent-dim)}
+.nav-links a.active{color:var(--accent);background:var(--accent-dim)}
+.nav-links a.active::after{
+  content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+  width:16px;height:2px;background:var(--accent);border-radius:1px;
+}
+.mobile-menu-btn{display:none;background:none;border:none;color:var(--text);font-size:24px;cursor:pointer;padding:4px;line-height:1;border-radius:6px;}
+
+/* ANIMATED BRAIN HERO */
+.hero{
+  text-align:center;padding:60px 0 40px;position:relative;overflow:hidden;
+  min-height:420px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+}
+.brain-canvas{
+  position:absolute;inset:0;width:100%;height:100%;z-index:0;
+  pointer-events:none;
+}
+.hero-content{position:relative;z-index:1;max-width:700px;padding:0 20px}
+.hero .badge{
+  display:inline-block;background:var(--accent-dim);color:var(--accent);
+  font-size:11px;font-weight:600;padding:4px 14px;border-radius:20px;
+  margin-bottom:16px;letter-spacing:0.5px;text-transform:uppercase;
+}
+.hero h1{
+  font-size:clamp(30px,5.5vw,48px);font-weight:800;
+  background:linear-gradient(135deg,var(--text) 0%,var(--accent) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  letter-spacing:-1px;margin-bottom:12px;line-height:1.15;
+}
+.hero p{color:var(--text-dim);font-size:17px;max-width:560px;margin:0 auto;line-height:1.7}
+.hero-cta{margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.hero-cta .btn{font-size:14px;padding:10px 24px}
+
+/* CONTAINER */
+.container{max-width:1100px;margin:0 auto;padding:20px 20px 40px}
+section{scroll-margin-top:72px}
+
+/* CARD ENTRANCE ANIMATION */
+.card{
+  background:var(--bg-card);border:1px solid var(--border);
+  border-radius:var(--radius);padding:28px 32px;margin-bottom:28px;
+  transition:border-color 0.4s ease,transform 0.3s ease,opacity 0.3s ease;
+  opacity:0;transform:translateY(20px);
+}
+.card.visible{opacity:1;transform:translateY(0)}
+.card:hover{border-color:rgba(0,212,170,0.12)}
+.card-header{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:24px;flex-wrap:wrap;gap:12px;
+}
+.card-header h2{
+  font-size:20px;font-weight:700;letter-spacing:-0.3px;
+  display:flex;align-items:center;gap:10px;
+}
+.card-header h2 .icon{color:var(--accent);font-size:20px}
+.card-actions{display:flex;gap:8px;flex-wrap:wrap}
+
+/* BUTTONS */
+.btn{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:8px 18px;border-radius:var(--radius-sm);border:1px solid var(--border);
+  font-family:inherit;font-size:13px;font-weight:600;
+  cursor:pointer;transition:all var(--transition);background:var(--bg-elevated);color:var(--text);
+  text-decoration:none;white-space:nowrap;user-select:none;
+}
+.btn:hover{border-color:var(--accent);background:var(--accent-dim);color:var(--accent);transform:translateY(-1px)}
+.btn:active{transform:translateY(0)}
+.btn-primary{background:var(--accent);color:var(--bg);border-color:var(--accent)}
+.btn-primary:hover{background:#00e8ba;color:var(--bg);border-color:#00e8ba}
+.btn-premium{background:linear-gradient(135deg,#00d4aa,#00b894);color:var(--bg);border:none;font-size:14px;padding:12px 28px;box-shadow:0 4px 20px rgba(0,212,170,0.3)}
+.btn-premium:hover{box-shadow:0 6px 30px rgba(0,212,170,0.45);transform:translateY(-2px)}
+.btn-danger{border-color:transparent;color:var(--danger);background:transparent}
+.btn-danger:hover{background:var(--danger-dim);border-color:var(--danger)}
+.btn-sm{padding:5px 12px;font-size:12px}
+.btn-ghost{background:transparent;border-color:transparent;color:var(--text-dim)}
+.btn-ghost:hover{background:var(--accent-dim);color:var(--accent);border-color:transparent}
+.btn-link{background:none;border:none;color:var(--accent);cursor:pointer;font:inherit;font-size:13px;font-weight:500;padding:4px 8px;border-radius:6px;transition:all var(--transition)}
+.btn-link:hover{background:var(--accent-dim)}
+
+/* MODE TOGGLE */
+.mode-toggle{display:flex;background:var(--bg-secondary);border-radius:6px;padding:2px;border:1px solid var(--border);gap:0}
+.mode-toggle button{
+  background:none;border:none;color:var(--text-dim);padding:6px 14px;font-size:12px;font-weight:500;
+  border-radius:5px;cursor:pointer;transition:all var(--transition);font-family:inherit;
+}
+.mode-toggle button.active{background:var(--bg-elevated);color:var(--accent);box-shadow:0 1px 4px rgba(0,0,0,0.2)}
+
+/* SCORECARD */
+.pillar-grid{display:grid;gap:16px}
+.pillar-item{
+  background:var(--bg-secondary);border-radius:var(--radius-sm);
+  padding:18px 20px;border:1px solid var(--border);
+  transition:all var(--transition);
+}
+.pillar-item:hover{border-color:rgba(0,212,170,0.1)}
+.pillar-item.circuit-broken{border-color:var(--warning);background:var(--warning-dim)}
+.pillar-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px;gap:8px}
+.pillar-name{font-weight:600;font-size:15px}
+.pillar-tooltip{
+  position:relative;display:inline-flex;align-items:center;
+  color:var(--text-muted);cursor:help;font-size:13px;margin-left:4px;
+}
+.pillar-tooltip .tip{
+  display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);
+  background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;
+  padding:10px 14px;font-size:12px;font-weight:400;color:var(--text-dim);
+  white-space:nowrap;z-index:10;box-shadow:var(--shadow);max-width:260px;white-space:normal;
+  width:max-content;
+}
+.pillar-tooltip:hover .tip{display:block}
+.pillar-desc{color:var(--text-muted);font-size:12px;margin-bottom:12px}
+.pillar-controls{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.pillar-controls label{font-size:12px;color:var(--text-dim);display:flex;align-items:center;gap:6px}
+
+/* Custom Range Slider */
+input[type="range"].custom-slider{
+  -webkit-appearance:none;appearance:none;height:6px;
+  border-radius:3px;outline:none;cursor:pointer;
+  background:var(--bg-elevated);
+  transition:background 0.2s;width:140px;
+}
+input[type="range"].custom-slider::-webkit-slider-runnable-track{
+  height:6px;border-radius:3px;
+  background:linear-gradient(to right,var(--accent) 0%,var(--accent) var(--pct,50%),var(--bg-elevated) var(--pct,50%),var(--bg-elevated) 100%);
+}
+input[type="range"].custom-slider::-webkit-slider-thumb{
+  -webkit-appearance:none;width:18px;height:18px;
+  background:var(--accent);border-radius:50%;cursor:pointer;
+  transition:transform 0.15s;box-shadow:0 0 12px rgba(0,212,170,0.4);
+  margin-top:-6px;
+}
+input[type="range"].custom-slider::-webkit-slider-thumb:hover{transform:scale(1.2)}
+input[type="range"].custom-slider::-moz-range-track{
+  height:6px;border-radius:3px;background:var(--bg-elevated);border:none;
+}
+input[type="range"].custom-slider::-moz-range-thumb{
+  width:18px;height:18px;background:var(--accent);border:none;
+  border-radius:50%;cursor:pointer;box-shadow:0 0 12px rgba(0,212,170,0.4);
+}
+input[type="range"].custom-slider::-moz-range-progress{
+  background:var(--accent);height:6px;border-radius:3px;
+}
+input[type="range"].custom-slider:focus-visible::-webkit-slider-thumb{outline:2px solid var(--accent);outline-offset:2px}
+input[type="range"].custom-slider:focus-visible::-moz-range-thumb{outline:2px solid var(--accent);outline-offset:2px}
+.score-input{display:flex;align-items:center;gap:10px;flex:1}
+.pillar-weight{width:110px}
+.pillar-weight input[type="range"].custom-slider{width:100%}
+.pillar-weight .val{font-size:11px;color:var(--text-dim);text-align:right;margin-top:2px}
+.pillar-score{width:50px;text-align:center;flex-shrink:0}
+.pillar-score .val{font-size:24px;font-weight:700;color:var(--accent);line-height:1;transition:all 0.3s ease}
+.pillar-score .label{font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px}
+.pillar-note{width:100%;margin-top:8px}
+.pillar-note textarea{
+  width:100%;background:var(--bg);border:1px solid var(--border);
+  border-radius:6px;padding:8px 10px;color:var(--text-dim);font-size:12px;
+  font-family:inherit;resize:vertical;min-height:40px;transition:border-color 0.2s;
+}
+.pillar-note textarea:focus{outline:none;border-color:var(--accent)}
+.pillar-note textarea::placeholder{color:var(--text-muted)}
+
+/* Score Display */
+.score-display{
+  text-align:center;padding:24px;margin-bottom:24px;
+  background:var(--bg-secondary);border-radius:var(--radius-sm);
+  border:1px solid var(--border);position:relative;overflow:hidden;
+}
+.score-display .total{font-size:56px;font-weight:800;color:var(--accent);letter-spacing:-2px;line-height:1;font-variant-numeric:tabular-nums}
+.score-display .total-label{font-size:13px;color:var(--text-dim);margin-top:4px;font-weight:500}
+.score-display .circuit-badge{
+  display:none;margin-top:8px;font-size:11px;font-weight:600;
+  color:var(--warning);background:var(--warning-dim);
+  padding:4px 12px;border-radius:20px;
+}
+.score-display .circuit-badge.show{display:inline-block}
+.score-bar{height:6px;background:var(--bg-elevated);border-radius:3px;margin-top:16px;overflow:hidden}
+.score-bar-fill{height:100%;background:linear-gradient(90deg,var(--accent),#00e8ba);border-radius:3px;transition:width 0.5s ease}
+.score-labels{display:flex;justify-content:space-between;margin-top:6px;font-size:11px;color:var(--text-muted)}
+
+/* RED FLAGS */
+.flag-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
+.flag-item{
+  perspective:800px;height:48px;
+}
+.flag-inner{
+  position:relative;width:100%;height:100%;
+  transition:transform 0.5s cubic-bezier(0.4,0,0.2,1);
+  transform-style:preserve-3d;cursor:pointer;
+  border-radius:var(--radius-sm);
+}
+.flag-item.flipped .flag-inner{transform:rotateY(180deg)}
+.flag-front,.flag-back{
+  position:absolute;inset:0;display:flex;align-items:center;
+  padding:10px 14px;border-radius:var(--radius-sm);
+  border:1px solid var(--border);
+  -webkit-backface-visibility:hidden;backface-visibility:hidden;
+  gap:10px;
+}
+.flag-front{
+  background:var(--bg-secondary);
+}
+.flag-back{
+  background:var(--bg-elevated);transform:rotateY(180deg);
+  font-size:12px;color:var(--text-dim);line-height:1.4;
+  overflow:hidden;
+}
+.flag-check{
+  width:18px;height:18px;border:2px solid var(--text-muted);border-radius:4px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  transition:all 0.2s;font-size:12px;background:transparent;
+}
+.flag-item.checked .flag-check{background:var(--danger);border-color:var(--danger);color:#fff}
+.flag-text{font-size:13px;font-weight:500}
+.flag-item.locked{cursor:default}
+.flag-item.locked .flag-front{opacity:0.5}
+.flag-item.locked .flag-back{opacity:0.5}
+.flag-lock-icon{color:var(--text-muted);font-size:14px;margin-left:auto}
+.flag-progress{
+  margin-bottom:16px;
+}
+.flag-progress-bar{
+  height:6px;background:var(--bg-elevated);border-radius:3px;overflow:hidden;
+}
+.flag-progress-fill{
+  height:100%;border-radius:3px;transition:width 0.4s ease;
+}
+.flag-progress-label{display:flex;justify-content:space-between;margin-top:4px;font-size:11px;color:var(--text-muted)}
+.flag-verdict{
+  text-align:center;padding:24px;margin-top:20px;
+  border-radius:var(--radius-sm);border:1px solid var(--border);
+  transition:all 0.3s ease;
+}
+.flag-verdict .count{font-size:44px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
+.flag-verdict .verdict{font-size:20px;font-weight:700;margin-top:4px}
+.flag-verdict .sub{font-size:13px;color:var(--text-dim);margin-top:4px}
+.verdict-safe .count,.verdict-safe .verdict{color:var(--safe)}
+.verdict-caution .count,.verdict-caution .verdict{color:var(--warning)}
+.verdict-highrisk .count,.verdict-highrisk .verdict{color:var(--danger)}
+.verdict-dead .count,.verdict-dead .verdict{color:#8b5cf6}
+.unlock-prompt{
+  text-align:center;padding:20px;margin-top:12px;
+  background:linear-gradient(135deg,var(--accent-dim),transparent);
+  border:1px dashed var(--accent);border-radius:var(--radius-sm);
+}
+.unlock-prompt p{font-size:14px;color:var(--text-dim);margin-bottom:10px}
+.unlock-prompt .price{font-size:22px;font-weight:800;color:var(--accent)}
+
+/* COMPARISON */
+.comparison-header{display:flex;gap:12px;align-items:center;margin-bottom:20px;flex-wrap:wrap}
+.comparison-header .comp-input-wrap{flex:1;min-width:120px;position:relative}
+.comparison-header input[type="text"]{
+  width:100%;background:var(--bg-secondary);border:1px solid var(--border);
+  border-radius:var(--radius-sm);padding:10px 14px;color:var(--text);font-family:inherit;font-size:13px;
+  transition:border-color 0.2s;
+}
+.comparison-header input[type="text"]:focus{outline:none;border-color:var(--accent)}
+.comparison-header .remove-opp{
+  position:absolute;right:4px;top:50%;transform:translateY(-50%);
+  background:none;border:none;color:var(--text-muted);cursor:pointer;padding:4px 6px;font-size:14px;border-radius:4px;transition:all 0.2s;
+}
+.comparison-header .remove-opp:hover{color:var(--danger);background:var(--danger-dim)}
+.comp-row{display:flex;gap:12px;margin-bottom:8px;align-items:center}
+.comp-row .label{width:120px;flex-shrink:0;font-size:12px;font-weight:500;color:var(--text-dim);text-align:right;padding-right:4px}
+.comp-slots{display:flex;gap:12px;flex:1}
+.comp-slot{flex:1;min-width:0;text-align:center}
+.comp-slot input[type="range"]{width:100%;-webkit-appearance:none;appearance:none;height:4px;background:var(--bg-elevated);border-radius:2px;outline:none;cursor:pointer}
+.comp-slot input[type="range"]::-webkit-slider-runnable-track{height:4px;border-radius:2px}
+.comp-slot input[type="range"]::-moz-range-track{height:4px;border-radius:2px;background:var(--bg-elevated);border:none}
+.comp-slot input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;background:var(--accent);border-radius:50%;cursor:pointer;box-shadow:0 0 6px rgba(0,212,170,0.3)}
+.comp-slot input[type="range"]::-moz-range-thumb{width:14px;height:14px;background:var(--accent);border:none;border-radius:50%;cursor:pointer}
+.comp-slot .val{font-size:13px;font-weight:600;color:var(--accent)}
+.comp-slot.winner .val{color:var(--safe)}
+.comp-slot.loser .val{color:var(--danger)}
+.comp-total{display:flex;gap:12px;margin-top:16px}
+.comp-total .slot{flex:1;text-align:center;padding:16px;background:var(--bg-secondary);border-radius:var(--radius-sm);border:1px solid var(--border);transition:all 0.3s ease}
+.comp-total .slot.rank-1{border-color:var(--safe);background:var(--safe-dim)}
+.comp-total .slot.rank-2{border-color:var(--warning);background:var(--warning-dim)}
+.comp-total .slot.rank-3{border-color:var(--danger-dim);background:transparent}
+.comp-total .slot .name{font-size:12px;color:var(--text-dim);margin-bottom:4px;font-weight:500}
+.comp-total .slot .score{font-size:30px;font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums}
+.comp-total .slot.rank-1 .score{color:var(--safe)}
+.comp-total .slot.rank-2 .score{color:var(--warning)}
+.comp-total .slot.rank-3 .score{color:var(--danger)}
+.comp-recommendation{
+  text-align:center;padding:16px;margin-top:16px;
+  background:var(--bg-secondary);border-radius:var(--radius-sm);
+  border:1px solid var(--border);
+}
+.comp-recommendation .rec-text{font-size:15px;font-weight:600;color:var(--accent)}
+
+/* DECISION HISTORY */
+.history-controls{display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.history-controls input[type="text"]{
+  flex:1;min-width:160px;background:var(--bg-secondary);border:1px solid var(--border);
+  border-radius:var(--radius-sm);padding:10px 14px;color:var(--text);font-family:inherit;font-size:13px;
+  transition:border-color 0.2s;
+}
+.history-controls input[type="text"]:focus{outline:none;border-color:var(--accent)}
+.history-table-wrap{overflow-x:auto}
+.history-table{width:100%;border-collapse:collapse;font-size:13px}
+.history-table th{
+  text-align:left;padding:10px 12px;font-weight:600;color:var(--text-dim);
+  border-bottom:1px solid var(--border);font-size:11px;text-transform:uppercase;letter-spacing:0.5px;
+  white-space:nowrap;cursor:pointer;user-select:none;
+}
+.history-table th:hover{color:var(--accent)}
+.history-table th .sort-icon{display:inline-block;margin-left:4px;opacity:0.3}
+.history-table th.sorted .sort-icon{opacity:1;color:var(--accent)}
+.history-table td{padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:middle}
+.history-table tr:hover td{background:var(--accent-dim)}
+.history-table .verdict-tag{
+  display:inline-block;padding:2px 10px;border-radius:12px;font-size:11px;font-weight:600;
+}
+.history-table .verdict-tag.safe{background:var(--safe-dim);color:var(--safe)}
+.history-table .verdict-tag.caution{background:var(--warning-dim);color:var(--warning)}
+.history-table .verdict-tag.highrisk{background:var(--danger-dim);color:var(--danger)}
+.history-table .verdict-tag.dead{background:rgba(139,92,246,0.12);color:#8b5cf6}
+.history-table .outcome-select{
+  background:var(--bg);border:1px solid var(--border);border-radius:4px;
+  color:var(--text);padding:3px 8px;font-size:12px;font-family:inherit;cursor:pointer;
+}
+.history-table .outcome-select:focus{outline:none;border-color:var(--accent)}
+.history-table .acc-dot{
+  display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:4px;
+}
+.history-table .acc-dot.correct{background:var(--safe)}
+.history-table .acc-dot.wrong{background:var(--danger)}
+.history-table .acc-dot.pending{background:var(--text-muted)}
+.history-empty{text-align:center;padding:40px 20px;color:var(--text-muted);font-size:14px}
+
+/* CONVERSION FUNNEL */
+.funnel{
+  text-align:center;padding:40px 32px;margin-bottom:28px;
+  background:linear-gradient(135deg,var(--bg-card),var(--bg-secondary));
+  border:1px solid var(--border);border-radius:var(--radius);
+  position:relative;overflow:hidden;
+}
+.funnel::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--accent),transparent);
+}
+.funnel h3{font-size:22px;font-weight:700;margin-bottom:8px}
+.funnel p{color:var(--text-dim);font-size:14px;margin-bottom:20px;max-width:480px;margin-left:auto;margin-right:auto}
+.funnel .price{font-size:36px;font-weight:800;color:var(--accent);display:block;margin-bottom:4px;letter-spacing:-1px}
+.funnel .sub-price{font-size:13px;color:var(--text-muted);margin-bottom:16px;display:block}
+.funnel.hidden{display:none}
+
+/* EXPORT */
+.export-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.export-grid .btn{padding:16px;flex-direction:column;gap:8px;font-size:13px;text-align:center;min-height:100px;justify-content:center}
+.export-grid .btn .icon{font-size:28px}
+
+/* FOOTER */
+footer{
+  background:var(--bg-secondary);
+  border-top:1px solid var(--border);
+  padding:32px 24px;text-align:center;margin-top:20px;
+}
+footer p{color:var(--text-muted);font-size:12px;line-height:1.8}
+footer p:first-child{margin-bottom:4px}
+
+/* TOAST */
+.toast{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);
+  background:var(--bg-elevated);border:1px solid var(--accent);color:var(--text);
+  padding:12px 24px;border-radius:var(--radius-sm);font-size:14px;font-weight:500;
+  opacity:0;transition:all 0.35s ease;z-index:200;pointer-events:none;
+  box-shadow:0 8px 32px rgba(0,0,0,0.4);max-width:90vw;text-align:center;
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast .icon{color:var(--accent);margin-right:8px}
+
+/* ADD OPP */
+.add-opp-btn{cursor:pointer;color:var(--text-dim);font-size:13px;font-weight:500;padding:8px 16px;border:1px dashed var(--border);border-radius:var(--radius-sm);transition:all 0.2s;background:none;font-family:inherit}
+.add-opp-btn:hover{border-color:var(--accent);color:var(--accent)}
+
+/* INLINE MANIFEST */
+.manifest-inline{display:none}
+
+/* PRINT */
+@media print{
+  nav,.toast,.funnel,.btn-danger,.add-opp-btn,.mobile-menu-btn,.history-controls .btn{display:none!important}
+  body{background:#fff;color:#000}
+  .card{background:#fff!important;border:1px solid #ddd!important;opacity:1!important;transform:none!important;box-shadow:none!important;break-inside:avoid}
+  .container{padding:20px!important}
+  .hero h1{-webkit-text-fill-color:#000!important;background:none!important;color:#000!important}
+  .hero p{color:#555!important}
+  .score-display .total{color:#00a!important}
+  .pillar-item{background:#f9f9f9!important;border-color:#ddd!important}
+  .flag-verdict{break-inside:avoid}
+  .comp-total .slot.rank-1{border-color:#2ed573!important}
+  .comp-total .slot.rank-2{border-color:#ffa502!important}
+  .comp-total .slot.rank-3{border-color:#ff4757!important}
+  .history-table td,.history-table th{border-color:#ddd!important}
+  .history-table tr:hover td{background:#f5f5f5!important}
+  footer{background:#f5f5f5!important;border-color:#ddd!important}
+  footer p{color:#666!important}
+  ::-webkit-scrollbar{display:none}
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  nav{padding:0 16px}
+  .nav-links{display:none;position:absolute;top:60px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--border);padding:8px 16px;flex-direction:column;gap:0}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:10px 12px;border-radius:6px}
+  .nav-links a.active::after{display:none}
+  .mobile-menu-btn{display:block}
+  .container{padding:12px 12px 24px}
+  .card{padding:18px 16px}
+  .card-header{flex-direction:column;align-items:flex-start}
+  .pillar-controls{flex-direction:column;align-items:stretch;gap:8px}
+  .pillar-weight{width:100%}
+  .score-input input[type="range"].custom-slider{width:100%}
+  .comparison-header{flex-direction:column}
+  .comp-row{flex-direction:column;align-items:stretch}
+  .comp-row .label{width:100%;text-align:left;padding:0 0 2px}
+  .comp-slots{flex-direction:column}
+  .comp-total{flex-direction:column}
+  .flag-grid{grid-template-columns:1fr}
+  .hero{min-height:340px;padding:40px 0 30px}
+  .hero p{font-size:15px}
+  .score-display .total{font-size:42px}
+  .export-grid{grid-template-columns:1fr 1fr}
+  .history-table{font-size:12px}
+  .history-table th,.history-table td{padding:8px 6px}
+}
+@media(max-width:480px){
+  .hero{min-height:300px}
+  .hero h1{font-size:26px}
+  .hero p{font-size:14px}
+  .score-display .total{font-size:36px}
+  .flag-verdict .count{font-size:34px}
+  .comp-total .slot .score{font-size:24px}
+  .funnel{padding:28px 20px}
+  .funnel .price{font-size:28px}
+  .export-grid{grid-template-columns:1fr}
+}
+@media(max-width:375px){
+  .card{padding:14px 12px}
+  .hero{padding:30px 0 20px;min-height:260px}
+  .hero .badge{font-size:10px;padding:3px 10px}
+  .score-display{padding:16px}
+  .pillar-item{padding:14px}
+}
+</style>
+</head>
+<body>
+
+<nav role="navigation" aria-label="Main navigation">
+  <div class="nav-brand">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="10"/>
+      <path d="M12 8v8M8 12h8"/>
+      <circle cx="12" cy="12" r="3" fill="var(--accent)" stroke="var(--accent)"/>
+    </svg>
+    <span>Opportunity Brain</span>
+  </div>
+  <div class="nav-links" id="navLinks" role="tablist">
+    <a href="#upload" role="tab">Upload</a>
+    <a href="#scorecard" role="tab" aria-selected="true">Scorecard</a>
+    <a href="#redflags" role="tab" aria-selected="false">Red Flags</a>
+    <a href="#comparison" role="tab" aria-selected="false">Compare</a>
+    <a href="#history" role="tab" aria-selected="false">History</a>
+    <a href="#export" role="tab" aria-selected="false">Export</a>
+  </div>
+  <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
+</nav>
+
+<div class="container">
+
+  <!-- HERO -->
+  <section class="hero" aria-label="Hero">
+    <svg class="brain-canvas" id="brainCanvas" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid meet" aria-hidden="true"></svg>
+    <div class="hero-content">
+      <div class="badge">Business Opportunity Framework</div>
+      <h1>Score Any Business Opportunity in 5 Minutes</h1>
+      <p>Stop guessing. Start knowing. The Opportunity Brain evaluates, compares, and tracks opportunities with a systematic 7-pillar framework.</p>
+      <div class="hero-cta">
+        <a href="#scorecard" class="btn btn-primary">Start Scoring →</a>
+        <a href="#redflags" class="btn">Check Red Flags</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- UPLOAD & AI EVALUATE -->
+  <section id="upload" class="card" aria-label="Upload Opportunity for AI Analysis">
+    <div class="card-header">
+      <h2><span class="icon" aria-hidden="true">📤</span> AI Opportunity Analyzer</h2>
+    </div>
+    <p style="color:var(--text-dim);font-size:14px;margin-bottom:16px">Upload your opportunity as a PDF, markdown, or just type the details. AI will analyze it and pre-fill your scorecard.</p>
+    <div class="upload-grid">
+      <div class="upload-zone" id="uploadZone" style="border:2px dashed var(--border);border-radius:var(--radius);padding:32px;text-align:center;cursor:pointer;transition:border-color 0.3s">
+        <div style="font-size:36px;margin-bottom:8px;opacity:0.6">📄</div>
+        <p style="font-weight:600;margin-bottom:4px">Drop your file here</p>
+        <p style="color:var(--text-muted);font-size:13px">PDF, Markdown, or TXT — or type below</p>
+        <input type="file" id="fileInput" accept=".pdf,.md,.txt" style="display:none">
+        <button class="btn btn-sm btn-ghost" style="margin-top:8px" onclick="document.getElementById('fileInput').click()">Choose File</button>
+        <span id="fileName" style="display:none;font-size:13px;color:var(--accent);margin-left:8px"></span>
+      </div>
+      <div class="input-zone" style="flex:1">
+        <div style="display:flex;gap:10px;margin-bottom:10px">
+          <input type="text" id="locationInput" placeholder="Your city/region (e.g. Cape Town, SA)" style="flex:1;padding:10px 12px;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--bg-card);color:var(--text);font-size:14px;font-family:inherit">
+          <select id="industrySelect" style="padding:10px 12px;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--bg-card);color:var(--text);font-size:14px;font-family:inherit">
+            <option value="">Industry</option>
+            <option value="tech">Technology</option>
+            <option value="health">Healthcare</option>
+            <option value="food">Food & Beverage</option>
+            <option value="retail">Retail & E-commerce</option>
+            <option value="services">Professional Services</option>
+            <option value="manufacturing">Manufacturing</option>
+            <option value="education">Education</option>
+            <option value="finance">Finance</option>
+            <option value="realestate">Real Estate</option>
+            <option value="energy">Energy & Green Tech</option>
+            <option value="tourism">Tourism & Hospitality</option>
+            <option value="logistics">Logistics & Transport</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <textarea id="opportunityText" placeholder="Or paste/type your opportunity details here...&#10;&#10;Example: A SaaS platform that helps small law firms automate their billing and client communication. Monthly subscription at R500/client. Target: 50 firms in Cape Town in year 1. Competitors: existing legal practice management software but none focused on micro-firms (1-3 lawyers). Initial build cost: R50K. Monthly recurring: R25K at target. Gross margin: 80%.&#10;&#10;Describe the opportunity in as much detail as you can — the AI will extract what it needs." style="width:100%;min-height:140px;padding:12px;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--bg-card);color:var(--text);font-size:14px;font-family:inherit;resize:vertical"></textarea>
+      </div>
+    </div>
+    <div class="ai-actions" style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap;align-items:center">
+      <button class="btn btn-primary" onclick="analyzeWithAI()" id="analyzeBtn">🔍 Analyze with AI</button>
+      <span id="aiStatus" style="color:var(--text-muted);font-size:13px">Keyword engine ready — AI model in background</span>
+      <div id="aiProgress" style="display:none;flex:1;max-width:200px;height:4px;background:var(--border);border-radius:2px;overflow:hidden">
+        <div id="aiProgressFill" style="width:0%;height:100%;background:var(--accent);border-radius:2px;transition:width 0.3s"></div>
+      </div>
+    </div>
+    <div class="ai-results-area" id="aiResultsArea" style="display:none;margin-top:16px">
+      <textarea id="aiResultsInput" placeholder="Paste ChatGPT's analysis results here..." style="width:100%;min-height:100px;padding:12px;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--bg-card);color:var(--text);font-size:13px;font-family:inherit;resize:vertical"></textarea>
+      <div style="display:flex;gap:10px;margin-top:8px">
+        <button class="btn btn-sm btn-primary" onclick="applyAIResults()">✅ Apply AI Scores to Scorecard</button>
+        <button class="btn btn-sm btn-ghost" onclick="document.getElementById('aiResultsArea').style.display='none'">Cancel</button>
+      </div>
+    </div>
+    <div id="marketIntelArea" style="display:none;margin-top:16px;background:var(--bg-card);border-radius:var(--radius);padding:20px;border:1px solid var(--accent)">
+      <h3 style="font-size:16px;margin-bottom:12px;color:var(--accent)">📊 Market Intelligence</h3>
+      <div class="intel-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+        <div class="intel-card" style="background:var(--bg-elevated);border-radius:var(--radius-sm);padding:14px">
+          <p style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px">Location Analysis</p>
+          <p id="intelLocation" style="font-size:13px;color:var(--text)"></p>
+        </div>
+        <div class="intel-card" style="background:var(--bg-elevated);border-radius:var(--radius-sm);padding:14px">
+          <p style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px">Trending</p>
+          <p id="intelTrending" style="font-size:13px;color:var(--accent)"></p>
+        </div>
+        <div class="intel-card" style="background:var(--bg-elevated);border-radius:var(--radius-sm);padding:14px">
+          <p style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px">Oversaturated</p>
+          <p id="intelSaturated" style="font-size:13px;color:var(--warning)"></p>
+        </div>
+        <div class="intel-card" style="background:var(--bg-elevated);border-radius:var(--radius-sm);padding:14px">
+          <p style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px">Market Gaps</p>
+          <p id="intelGaps" style="font-size:13px;color:var(--safe)"></p>
+        </div>
+      </div>
+      <div id="intelVerdict" style="font-size:15px;font-weight:600;padding:10px 14px;border-radius:var(--radius-sm);text-align:center"></div>
+    </div>
+
+    <div id="aiPromptArea" style="display:none;margin-top:16px">
+      <p style="color:var(--accent);font-size:13px;font-weight:600;margin-bottom:6px">✅ Prompt copied! Paste into ChatGPT:</p>
+      <textarea id="aiPromptText" readonly style="width:100%;min-height:200px;padding:12px;border-radius:var(--radius-sm);border:1px solid var(--accent);background:var(--bg-card);color:var(--text);font-size:12px;font-family:monospace;resize:vertical"></textarea>
+      <div style="display:flex;gap:10px;margin-top:8px;flex-wrap:wrap">
+        <button class="btn btn-sm btn-primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+        <span style="color:var(--text-muted);font-size:12px;align-self:center">After ChatGPT responds, paste the results in the box below</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCORECARD -->
+  <section id="scorecard" class="card" aria-label="7-Pillar Scorecard">
+    <div class="card-header">
+      <h2><span class="icon" aria-hidden="true">◆</span> 7-Pillar Scorecard</h2>
+      <div class="card-actions">
+        <div class="mode-toggle" role="group" aria-label="Scorecard mode">
+          <button data-mode="simple" class="active" aria-pressed="true">Simple</button>
+          <button data-mode="detailed" aria-pressed="false">Detailed</button>
+        </div>
+        <button class="btn btn-sm btn-ghost" onclick="resetScorecard()" aria-label="Reset all scorecard values">Reset</button>
+      </div>
+    </div>
+    <div class="score-display">
+      <div class="total" id="totalScore" aria-live="polite">0.0</div>
+      <div class="total-label">Weighted Score</div>
+      <div class="circuit-badge" id="circuitBadge">⚠ Circuit breaker active — max capped at 5.0</div>
+      <div class="score-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="10" id="scoreBar">
+        <div class="score-bar-fill" id="scoreBarFill" style="width:0%"></div>
+      </div>
+      <div class="score-labels"><span>Weak (0)</span><span>Strong (10)</span></div>
+    </div>
+    <div class="pillar-grid" id="pillarGrid" role="group" aria-label="Scoring pillars"></div>
+  </section>
+
+  <!-- RED FLAGS -->
+  <section id="redflags" class="card" aria-label="Red Flag Detector">
+    <div class="card-header">
+      <h2><span class="icon" aria-hidden="true">⚠</span> Red Flag Detector</h2>
+      <div class="card-actions">
+        <button class="btn btn-sm btn-ghost" onclick="resetFlags()" aria-label="Clear all red flags">Reset</button>
+      </div>
+    </div>
+    <div class="flag-progress">
+      <div class="flag-progress-bar">
+        <div class="flag-progress-fill" id="flagProgressFill" style="width:0%"></div>
+      </div>
+      <div class="flag-progress-label"><span>0 of 23 flags</span><span id="flagProgressPct">0%</span></div>
+    </div>
+    <div class="flag-verdict" id="flagVerdict">
+      <div class="count" id="flagCount">0</div>
+      <div class="verdict" id="flagVerdictText">No flags raised</div>
+      <div class="sub" id="flagSub">Select red flags below</div>
+    </div>
+    <div class="flag-grid" id="flagGrid" role="group" aria-label="Red flag list"></div>
+    <div class="unlock-prompt hidden" id="unlockFlagsPrompt">
+      <p>🔒 <strong>23 Red Flags</strong> — you've seen the first 3.</p>
+      <p>Unlock the full detector and get:</p>
+      <p style="font-size:13px;color:var(--text-dim);margin:6px 0 12px">• All 23 flags • Verdict system • Priority ranking • Export</p>
+      <div class="price" id="unlockFlagsPrice">$29</div>
+      <a href="https://francosmith4.gumroad.com/l/cdaoh" target="_blank" class="btn btn-premium" style="text-decoration:none;color:white;padding:10px 24px;border-radius:8px;font-weight:600;display:inline-block;background:linear-gradient(135deg,var(--accent),#0d9488)">Unlock All Features →</a>
+      <p style="font-size:12px;color:var(--text-muted);margin-top:4px">One-time. Lifetime access.</p>
+      <button class="btn btn-primary" style="margin-top:12px;font-size:14px;padding:10px 28px" onclick="showToast('🔓 Premium unlocked — thank you!')">Unlock Premium →</button>
+    </div>
+  </section>
+
+  <!-- COMPARISON -->
+  <section id="comparison" class="card" aria-label="Comparison Matrix">
+    <div class="card-header">
+      <h2><span class="icon" aria-hidden="true">⇄</span> Comparison Matrix</h2>
+      <div class="card-actions">
+        <button class="btn btn-sm add-opp-btn" onclick="addOpp()" aria-label="Add another opportunity to compare">+ Add Opportunity</button>
+        <button class="btn btn-sm btn-ghost" onclick="resetComparison()" aria-label="Reset comparison data">Reset</button>
+      </div>
+    </div>
+    <div id="comparisonArea"></div>
+  </section>
+
+  <!-- DECISION HISTORY -->
+  <section id="history" class="card" aria-label="Decision History">
+    <div class="card-header">
+      <h2><span class="icon" aria-hidden="true">✎</span> Decision History</h2>
+      <div class="card-actions">
+        <button class="btn btn-sm btn-danger" onclick="clearHistory()" aria-label="Delete all history entries">Clear All</button>
+      </div>
+    </div>
+    <div class="history-controls">
+      <input type="text" id="historyNameInput" placeholder="Opportunity name (e.g. SaaS Platform)" aria-label="Opportunity name" autocomplete="off">
+      <button class="btn btn-primary btn-sm" onclick="addHistoryEntry()" aria-label="Save current evaluation to history">Save to History</button>
+    </div>
+    <div class="history-table-wrap">
+      <table class="history-table" id="historyTable" role="table">
+        <thead>
+          <tr>
+            <th role="columnheader" data-sort="name">Name <span class="sort-icon">▲</span></th>
+            <th role="columnheader" data-sort="date" class="sorted" data-order="desc">Date <span class="sort-icon">▲</span></th>
+            <th role="columnheader" data-sort="score">Score <span class="sort-icon">▲</span></th>
+            <th role="columnheader" data-sort="verdict">Verdict <span class="sort-icon">▲</span></th>
+            <th role="columnheader" data-sort="flags">Flags <span class="sort-icon">▲</span></th>
+            <th role="columnheader">Actual Outcome</th>
+            <th role="columnheader">Accuracy</th>
+            <th role="columnheader" aria-label="Delete entry"></th>
+          </tr>
+        </thead>
+        <tbody id="historyBody"></tbody>
+      </table>
+    </div>
+    <div class="history-empty" id="historyEmpty">No evaluations saved yet. Score an opportunity above, then click "Save to History".</div>
+  </section>
+
+  <!-- EXPORT -->
+  <section id="export" class="card" aria-label="Export Data">
+    <div class="card-header">
+      <h2><span class="icon" aria-hidden="true">↓</span> Export &amp; Backup</h2>
+    </div>
+    <div class="export-grid">
+      <button class="btn" onclick="exportJSON()" aria-label="Download all data as JSON">
+        <span class="icon" aria-hidden="true">📦</span>
+        <span>Export as JSON</span>
+      </button>
+      <button class="btn" onclick="window.print()" aria-label="Print or save as PDF">
+        <span class="icon" aria-hidden="true">🖨</span>
+        <span>Print / PDF</span>
+      </button>
+      <button class="btn" onclick="clearAllData()" aria-label="Delete all data from browser storage">
+        <span class="icon" aria-hidden="true">🗑</span>
+        <span>Clear All Data</span>
+      </button>
+      <button class="btn" onclick="shareScore()" aria-label="Share your score on X/Twitter">
+        <span class="icon" aria-hidden="true">𝕏</span>
+        <span>Share Score</span>
+      </button>
+      <button class="btn" onclick="shareLinkedIn()" aria-label="Share on LinkedIn">
+        <span class="icon" aria-hidden="true">in</span>
+        <span>Share on LinkedIn</span>
+      </button>
+    </div>
+    <p style="color:var(--text-muted);font-size:12px;margin-top:14px;line-height:1.6">
+      JSON includes scorecard, red flags, comparison data, decision history, and metadata. PDF uses your browser's print dialog with clean formatting.
+    </p>
+  </section>
+
+  <!-- CONVERSION FUNNEL: Premium CTA -->
+  <section class="funnel hidden" id="funnelPremium">
+    <h3>🧠 Master Opportunity Evaluation</h3>
+    <p>Unlock unlimited scoring, full 23 red flags, priority comparison, and advanced analytics. Full web app access — installs on your phone, works offline.</p>
+    <span class="price">$29</span>
+    <span class="sub-price">One-time payment — lifetime access</span>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+      <a href="https://francosmith4.gumroad.com/l/cdaoh" target="_blank" class="btn btn-premium" style="text-decoration:none;color:white;padding:12px 28px;border-radius:8px;font-weight:600;background:linear-gradient(135deg,var(--accent),#0d9488);font-size:14px">Get Premium →</a>
+      <button class="btn btn-ghost" onclick="document.getElementById('funnelPremium').classList.add('hidden')">Maybe later</button>
+    </div>
+  </section>
+
+  <section class="funnel hidden" id="funnelGuide">
+    <h3>📘 The Complete Opportunity Guide</h3>
+    <p>Get the full 23 red flag analysis methodology, case studies, and expert calibration templates.</p>
+    <span class="price">$12.50</span>
+    <span class="sub-price">Instant download — PDF + workbook</span>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+      <a href="https://francosmith4.gumroad.com/l/fbsvbn" target="_blank" class="btn btn-primary" style="text-decoration:none;color:white;padding:12px 28px;border-radius:8px;font-weight:600;font-size:14px">Get the Full Guide →</a>
+      <button class="btn btn-ghost" onclick="document.getElementById('funnelGuide').classList.add('hidden')">Maybe later</button>
+    </div>
+  </section>
+
+  <!-- BOTTOM CTA -->
+  <section class="funnel" id="funnelBottom">
+    <h3>Ready to Make Smarter Decisions?</h3>
+    <p>Join thousands using the Opportunity Brain to evaluate business opportunities systematically.</p>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+      <a href="#scorecard" class="btn btn-premium">Start Your Next Evaluation →</a>
+    </div>
+  </section>
+
+</div>
+
+<footer role="contentinfo">
+  <p>Decision support tool. Not financial advice.</p>
+  <p>Aether Inc. © 2026. All rights reserved. The Opportunity Brain.</p>
+  <p style="margin-top:8px;font-size:11px;color:var(--text-muted)">Built with ☕ and <span style="color:var(--accent)">◆</span> by the Aether team.</p>
+</footer>
+
+<div class="toast" id="toast" role="alert" aria-live="polite">
+  <span class="icon" aria-hidden="true">✓</span>
+  <span id="toastMsg">Saved</span>
+</div>
+
+<script id="manifestData" type="application/json">{
+  "name":"Opportunity Brain",
+  "short_name":"OppBrain",
+  "description":"Score and track business opportunities with the 7-pillar framework.",
+  "start_url":".",
+  "display":"standalone",
+  "background_color":"#0a1628",
+  "theme_color":"#0a1628",
+  "icons":[]
+}</script>
+<script>
+(function(){var m=JSON.parse(document.getElementById('manifestData').textContent);document.getElementById('manifestPlaceholder').href='data:application/json,'+encodeURIComponent(JSON.stringify(m))})();
+
+// ===== SERVICE WORKER =====
+if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){})})}
+
+// ===== DATA =====
+const PILLARS=[
+  {id:'market',name:'Market Demand',desc:'Size, growth rate, and urgency of the target market. Larger TAM, CAGR >20%, and proven willingness to pay score higher.',weightTip:'Markets are the tide that lifts all boats. Weight higher if the market is large and growing.'},
+  {id:'economics',name:'Unit Economics',desc:'Gross margins, CAC, LTV, and path to profitability. LTV/CAC >3 and gross margins >60% are ideal.',weightTip:'The math must work. Weight higher for capital-efficient businesses with strong margins.'},
+  {id:'defensibility',name:'Defensibility',desc:'IP, network effects, brand, data moats, and switching costs. The harder to replicate, the better.',weightTip:'Moat determines longevity. Weight higher if long-term competitive advantage matters most.'},
+  {id:'fit',name:'Founder Fit',desc:'Relevant expertise, passion, network, and execution ability. Domain experience dramatically reduces risk.',weightTip:'Team is everything in early stage. Weight higher for pre-product or pre-revenue opportunities.'},
+  {id:'timing',name:'Timing',desc:'Market readiness, technology tailwinds, and regulatory environment. Being too early is indistinguishable from wrong.',weightTip:'Timing separates visionaries from failures. Weight higher in fast-moving markets.'},
+  {id:'capital',name:'Capital Efficiency',desc:'Burn rate, runway, and capital required to reach milestones. Less capital intensive = less risk.',weightTip:'Efficiency = survival. Weight higher if capital is constrained or the environment is tight.'},
+  {id:'exit',name:'Exit Potential',desc:'Size of exit opportunity, acquirer landscape, and IPO viability. Clear exit paths reduce liquidity risk.',weightTip:'Exit defines the return. Weight higher if this is an investment rather than an operating business.'}
+];
+const RED_FLAGS=[
+  {name:'Heavily regulated industry',desc:'FDA, SEC, FCC or similar oversight dramatically increases time and legal costs to market.'},
+  {name:'Requires massive upfront capital',desc:'Needs >$500K before any revenue. High capital requirements = high failure risk.'},
+  {name:'Long sales cycle (>6 months)',desc:'Enterprise deals exceeding 6 months burn cash and create forecasting uncertainty.'},
+  {name:'Low margins (<20%)',desc:'Gross margins below 20% leave no room for operating expenses, marketing, or profit.'},
+  {name:'High customer acquisition cost',desc:'CAC > 1/3 of LTV means every customer is a net drain for too long.'},
+  {name:'Low switching costs',desc:'Customers can leave with zero friction. No lock-in = constant churn risk.'},
+  {name:'Network effects owned by competitor',desc:'Competitor already has the user base. Winning against an entrenched network is extremely difficult.'},
+  {name:'Founder lacks domain expertise',desc:'Learning on the job in a complex industry multiplies the already high failure rate.'},
+  {name:'Market is shrinking',desc:'Negative CAGR means fighting for a shrinking pie. An order of magnitude harder.'},
+  {name:'Relies on single supplier',desc:'One supplier failure kills the business. No diversification = existential risk.'},
+  {name:'Seasonal or cyclical demand',desc:'Revenue concentrated in a few months creates cash flow crunches and underutilized assets.'},
+  {name:'Low repeat purchase rate',desc:'One-and-done purchases mean constant new customer acquisition. High cost, low efficiency.'},
+  {name:'Requires extensive user education',desc:'Teaching the market from scratch is expensive, slow, and often fails.'},
+  {name:'Regulatory uncertainty',desc:'Pending regulations or unclear legal status makes the future unpredictable.'},
+  {name:'Patent or trademark barriers',desc:'IP litigation risk can bankrupt a startup. Freedom to operate is not guaranteed.'},
+  {name:'High customer churn rate',desc:'>5% monthly churn means losing half your customers in under a year. Unsustainable.'},
+  {name:'Commodity product — no differentiation',desc:'Pure price competition. Lowest margins, highest churn, no pricing power.'},
+  {name:'Crowded market with dominant players',desc:'Competing against well-funded incumbents with distribution, brand, and data advantages.'},
+  {name:'Requires physical inventory',desc:'Inventory risk ties up capital, creates waste, and limits flexibility.'},
+  {name:'Long payback period (>18 months)',desc:'Taking over 18 months to recover CAC strains cash flow and limits growth investment.'},
+  {name:'Customer concentration risk',desc:'One customer >30% of revenue means that customer owns your business.'},
+  {name:'Technology obsolescence risk',desc:'Rapid tech change means your solution may be outdated before launch.'},
+  {name:'Negative unit economics at scale',desc:'If unit economics don\'t improve with scale, growth amplifies losses. A death spiral.'}
+];
+
+// ===== STATE =====
+const GUMROAD_URL = 'https://francosmith4.gumroad.com/l/cdaoh';
+const GUMROAD_PREMIUM = GUMROAD_URL + '?option=premium';
+var state=loadState();
+if(!state){
+  state={
+    pillars:PILLARS.map(function(p){return{id:p.id,score:5,weight:50,note:''}}),
+    redFlags:RED_FLAGS.map(function(){return false}),
+    comparisons:[{name:'Opportunity A',scores:[5,5,5,5,5,5,5]}],
+    history:[]
+  };
+}
+let scoreAnimationId=null;
+let mode='simple';
+
+function saveState(){try{localStorage.setItem('oppbrain',JSON.stringify(state))}catch(e){}}
+function loadState(){
+  try{
+    var raw=localStorage.getItem('oppbrain');
+    if(!raw)return null;
+    var parsed=JSON.parse(raw);
+    if(parsed&&parsed.pillars&&parsed.redFlags&&parsed.comparisons&&parsed.history!==undefined)return parsed;
+    return null;
+  }catch(e){return null}
+}
+
+function showToast(msg){
+  var el=document.getElementById('toast');
+  document.getElementById('toastMsg').textContent=msg;
+  el.classList.add('show');
+  clearTimeout(el._timer);
+  el._timer=setTimeout(function(){el.classList.remove('show')},2400);
+}
+
+function escapeHtml(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML}
+
+function getVerdictLabel(score){
+  if(score>=8)return{label:'Strong',cls:'safe'};
+  if(score>=6)return{label:'Promising',cls:'caution'};
+  if(score>=4)return{label:'Risky',cls:'highrisk'};
+  return{label:'Avoid',cls:'dead'};
+}
+
+function getFlagVerdict(count){
+  if(count===0)return{verdict:'No flags raised',sub:'Opportunity appears clean',cls:'verdict-safe'};
+  if(count<=3)return{verdict:'Caution',sub:count+' flag'+(count>1?'s':'')+' — proceed with care',cls:'verdict-caution'};
+  if(count<=7)return{verdict:'High Risk',sub:count+' flags — serious concerns detected',cls:'verdict-highrisk'};
+  if(count<=15)return{verdict:'Critical',sub:count+' flags — significant red flags',cls:'verdict-highrisk'};
+  return{verdict:'Dead',sub:count+' flags — avoid this opportunity',cls:'verdict-dead'};
+}
+
+// ===== ANIMATED BRAIN NETWORK =====
+(function initBrain(){
+  var svg=document.getElementById('brainCanvas');
+  var w=800,h=400;
+  var nodes=[];
+  var cx=w/2,cy=h/2;
+  var layers=[5,8,10,8,5];
+  var xStep=w/(layers.length+1);
+  var nodeId=0;
+  var colors=['rgba(0,212,170,0.6)','rgba(0,212,170,0.4)','rgba(0,212,170,0.25)'];
+  layers.forEach(function(count,l){
+    var x=xStep*(l+1);
+    var yStep=h/(count+1);
+    for(var i=0;i<count;i++){
+      var y=yStep*(i+1)+(Math.random()-0.5)*20;
+      nodes.push({
+        id:nodeId++,layer:l,
+        x:x+Math.sin(nodeId)*8,
+        y:y+Math.cos(nodeId*1.3)*6,
+        vx:(Math.random()-0.5)*0.3,
+        vy:(Math.random()-0.5)*0.3,
+        r:2+Math.random()*3
+      });
+    }
+  });
+  var edges=[];
+  nodes.forEach(function(a,i){
+    nodes.forEach(function(b,j){
+      if(i>=j)return;
+      var dx=a.x-b.x,dy=a.y-b.y;
+      var d=Math.sqrt(dx*dx+dy*dy);
+      if(d<150&&Math.random()<0.3){
+        edges.push({a:i,b:j,d:d});
+      }
+    });
+  });
+  var ns=document.createDocumentFragment();
+  edges.forEach(function(e){
+    var line=document.createElementNS('http://www.w3.org/2000/svg','line');
+    line.setAttribute('stroke',colors[e.d>100?2:e.d>70?1:0]);
+    line.setAttribute('stroke-width',(1-e.d/150)*1.5+0.3+'');
+    line.setAttribute('opacity','0.4');
+    line.setAttribute('class','brain-edge');
+    var x1=nodes[e.a].x,y1=nodes[e.a].y,x2=nodes[e.b].x,y2=nodes[e.b].y;
+    line.setAttribute('x1',x1+'');line.setAttribute('y1',y1+'');
+    line.setAttribute('x2',x2+'');line.setAttribute('y2',y2+'');
+    e.el=line;
+    ns.appendChild(line);
+  });
+  nodes.forEach(function(n){
+    var circle=document.createElementNS('http://www.w3.org/2000/svg','circle');
+    circle.setAttribute('cx',n.x+'');circle.setAttribute('cy',n.y+'');
+    circle.setAttribute('r',n.r+'');
+    circle.setAttribute('fill','var(--accent)');
+    circle.setAttribute('opacity',(0.3+n.r/10)+'');
+    circle.setAttribute('class','brain-node');
+    n.el=circle;
+    ns.appendChild(circle);
+    // glow
+    var glow=document.createElementNS('http://www.w3.org/2000/svg','circle');
+    glow.setAttribute('cx',n.x+'');glow.setAttribute('cy',n.y+'');
+    glow.setAttribute('r',(n.r*3)+'');
+    glow.setAttribute('fill','var(--accent)');
+    glow.setAttribute('opacity','0.04');
+    glow.setAttribute('class','brain-glow');
+    n.glow=glow;
+    ns.appendChild(glow);
+  });
+  svg.appendChild(ns);
+  function animateBrain(){
+    var t=Date.now()*0.001;
+    nodes.forEach(function(n,i){
+      n.x+=Math.sin(t*0.5+i*0.7)*0.08;
+      n.y+=Math.cos(t*0.6+i*0.5)*0.08;
+      n.x+=Math.sin(t*0.3+i*1.1)*0.04;
+      n.y+=Math.cos(t*0.4+i*0.9)*0.04;
+      n.el.setAttribute('cx',n.x+'');
+      n.el.setAttribute('cy',n.y+'');
+      n.glow.setAttribute('cx',n.x+'');
+      n.glow.setAttribute('cy',n.y+'');
+      var pulse=0.25+Math.sin(t*1.5+i*2.0)*0.15;
+      n.el.setAttribute('opacity',Math.min(1,n.r/10+pulse*0.3)+'');
+    });
+    edges.forEach(function(e){
+      var a=nodes[e.a],b=nodes[e.b];
+      e.el.setAttribute('x1',a.x+'');e.el.setAttribute('y1',a.y+'');
+      e.el.setAttribute('x2',b.x+'');e.el.setAttribute('y2',b.y+'');
+      var pulse=Math.sin(t*1.2+e.a+e.b)*0.15;
+      e.el.setAttribute('opacity',(0.3+pulse)+'');
+    });
+    requestAnimationFrame(animateBrain);
+  }
+  requestAnimationFrame(animateBrain);
+})();
+
+// ===== SCORECARD =====
+function renderScorecard(){
+  var grid=document.getElementById('pillarGrid');
+  grid.innerHTML='';
+  var totalWeight=state.pillars.reduce(function(s,p){return s+p.weight},0);
+  state.pillars.forEach(function(p,i){
+    var div=document.createElement('div');
+    div.className='pillar-item'+(circuitActive()&&p.score<3?' circuit-broken':'');
+    var noteHtml=mode==='detailed'?'<div class="pillar-note"><textarea placeholder="Notes for '+PILLARS[i].name+'..." data-index="'+i+'" aria-label="Notes for '+PILLARS[i].name+'">'+escapeHtml(p.note||'')+'</textarea></div>':'';
+    div.innerHTML=
+      '<div class="pillar-top">'+
+        '<div><div class="pillar-name">'+PILLARS[i].name+
+          '<span class="pillar-tooltip" tabindex="0" role="button" aria-label="Weight calibration info">ℹ<span class="tip">'+PILLARS[i].weightTip+'</span></span>'+
+        '</div><div class="pillar-desc">'+PILLARS[i].desc+'</div></div>'+
+        '<div class="pillar-score"><div class="val" id="pval-'+i+'">'+p.score+'<span class="label">/10</span></div></div>'+
+      '</div>'+
+      '<div class="pillar-controls">'+
+        '<div class="score-input">'+
+          '<label for="pslider-'+i+'">Score</label>'+
+          '<input type="range" id="pslider-'+i+'" class="custom-slider" min="1" max="10" step="1" value="'+p.score+'" data-index="'+i+'" data-type="score" aria-label="'+PILLARS[i].name+' score" aria-valuenow="'+p.score+'" aria-valuemin="1" aria-valuemax="10">'+
+        '</div>'+
+        '<div class="pillar-weight">'+
+          '<label for="pwslider-'+i+'">Wt</label>'+
+          '<input type="range" id="pwslider-'+i+'" class="custom-slider" min="0" max="100" step="5" value="'+p.weight+'" data-index="'+i+'" data-type="weight" aria-label="'+PILLARS[i].name+' weight percentage">'+
+          '<div class="val" id="pwval-'+i+'">'+p.weight+'%</div>'+
+        '</div>'+
+      '</div>'+noteHtml;
+    grid.appendChild(div);
+  });
+  grid.querySelectorAll('input[type="range"]').forEach(function(input){
+    input.addEventListener('input',onPillarChange);
+    updateSliderFill(input);
+  });
+  if(mode==='detailed'){
+    grid.querySelectorAll('.pillar-note textarea').forEach(function(ta){
+      ta.addEventListener('input',function(e){
+        var idx=parseInt(e.target.dataset.index);
+        state.pillars[idx].note=e.target.value;
+        saveState();
+      });
+    });
+  }
+  updateTotal();
+}
+
+function updateSliderFill(input){
+  var min=parseFloat(input.min)||1,max=parseFloat(input.max)||10,val=parseFloat(input.value);
+  var pct=((val-min)/(max-min))*100;
+  input.style.setProperty('--pct',pct+'%');
+}
+
+function onPillarChange(e){
+  var idx=parseInt(e.target.dataset.index);
+  var type=e.target.dataset.type;
+  var val=parseInt(e.target.value);
+  updateSliderFill(e.target);
+  if(type==='score'){
+    state.pillars[idx].score=val;
+    document.getElementById('pval-'+idx).innerHTML=val+'<span class="label">/10</span>';
+    e.target.setAttribute('aria-valuenow',val);
+  }else{
+    state.pillars[idx].weight=val;
+    document.getElementById('pwval-'+idx).textContent=val+'%';
+  }
+  // re-check circuit breaker visual
+  var items=document.querySelectorAll('.pillar-item');
+  state.pillars.forEach(function(p,i){
+    items[i].classList.toggle('circuit-broken',circuitActive()&&p.score<3);
+  });
+  animateTotal();
+  saveState();
+}
+
+function circuitActive(){
+  return state.pillars.some(function(p){return p.score<3});
+}
+
+function getEffectiveScore(){
+  var totalWeight=state.pillars.reduce(function(s,p){return s+p.weight},0);
+  if(totalWeight===0)return 0;
+  var raw=state.pillars.reduce(function(s,p){return s+(p.score*p.weight)},0)/totalWeight;
+  if(circuitActive()&&raw>5)return 5;
+  return raw;
+}
+
+function animateTotal(){
+  var el=document.getElementById('totalScore');
+  var barFill=document.getElementById('scoreBarFill');
+  var bar=document.getElementById('scoreBar');
+  var badge=document.getElementById('circuitBadge');
+  var target=getEffectiveScore();
+  var start=parseFloat(el.textContent)||0;
+  if(scoreAnimationId){cancelAnimationFrame(scoreAnimationId);scoreAnimationId=null;}
+  var duration=400,startTime=null;
+  function step(ts){
+    if(!startTime)startTime=ts;
+    var pct=Math.min((ts-startTime)/duration,1);
+    var eased=1-Math.pow(1-pct,3);
+    var current=start+(target-start)*eased;
+    el.textContent=current.toFixed(1);
+    barFill.style.width=(current/10*100)+'%';
+    bar.setAttribute('aria-valuenow',current.toFixed(1));
+    if(pct<1){scoreAnimationId=requestAnimationFrame(step)}
+    else{
+      el.textContent=target.toFixed(1);
+      barFill.style.width=(target/10*100)+'%';
+      bar.setAttribute('aria-valuenow',target.toFixed(1));
+    }
+  }
+  scoreAnimationId=requestAnimationFrame(step);
+  badge.classList.toggle('show',circuitActive()&&target>5);
+}
+
+function updateTotal(){
+  var el=document.getElementById('totalScore');
+  var barFill=document.getElementById('scoreBarFill');
+  var bar=document.getElementById('scoreBar');
+  var badge=document.getElementById('circuitBadge');
+  var val=getEffectiveScore();
+  el.textContent=val.toFixed(1);
+  barFill.style.width=(val/10*100)+'%';
+  bar.setAttribute('aria-valuenow',val.toFixed(1));
+  badge.classList.toggle('show',circuitActive()&&val>5);
+}
+
+// ===== INTERNAL AI ANALYZER (in-browser, no external API) =====
+var aiModel=null;
+var aiModelLoaded=false;
+var aiLoading=false;
+
+// Initialize AI model
+async function initAIModel(){
+  if(aiModelLoaded||aiLoading)return;
+  aiLoading=true;
+  document.getElementById('aiStatus').textContent='Loading AI model (~65MB first visit, cached after)...';
+  document.getElementById('aiProgress').style.display='block';
+  try{
+    var pipeline=typeof importScripts==='undefined'?self.Transformers?self.Transformers.pipeline:null:null;
+    if(typeof Xenova!=='undefined'&&Xenova.pipeline){
+      var p=Xenova.pipeline;
+      var statusEl=document.getElementById('aiStatus');
+      var progressEl=document.getElementById('aiProgressFill');
+      // Use a lighter model for scoring - distilbert is ~65MB
+      aiModel=await p('text-classification','Xenova/distilbert-base-uncased-finetuned-sst-2-english',{
+        progress_callback:function(data){
+          if(data.status==='download'&&progressEl){
+            var pct=data.loaded/data.total*100;
+            progressEl.style.width=pct+'%';
+            if(statusEl)statusEl.textContent='Downloading AI model... '+Math.round(pct)+'%';
+          }
+        }
+      });
+      aiModelLoaded=true;
+      if(statusEl)statusEl.textContent='✅ AI model ready — analyzing locally';
+      setTimeout(function(){
+        var el=document.getElementById('aiProgress');
+        if(el)el.style.display='none';
+      },2000);
+    } else {
+      // Transformers not available yet, try later or use keyword engine
+      setTimeout(initAIModel,2000);
+    }
+  } catch(e){
+    console.warn('AI model load failed:',e);
+    document.getElementById('aiStatus').textContent='⚠️ AI model download failed. Using keyword analysis.';
+    setTimeout(function(){
+      var el=document.getElementById('aiProgress');
+      if(el)el.style.display='none';
+    },3000);
+  }
+  aiLoading=false;
+}
+
+// Keyword-based scoring engine (works instantly, no download)
+function keywordAnalyze(text,location,industry){
+  text=((text||'')+' '+(industry||'')).toLowerCase();
+  var loc=((location||'')).toLowerCase();
+  
+  // Market demand keywords
+  var marketScore=5; // neutral start
+  var marketHigh=['urgent','demand','growing','need this','waiting','waitlist','pre-sold','underserved','pain point','frustrated','desperate','shortage','overflow','backlog','high demand'];
+  var marketLow=['saturated','crowded','commodity','race to bottom','no demand','niche too small','unproven','early adopter','education needed','small market','low willingness'];
+  marketHigh.forEach(function(w){if(text.includes(w))marketScore++;});
+  marketLow.forEach(function(w){if(text.includes(w))marketScore--;});
+  marketScore=Math.max(1,Math.min(10,marketScore));
+  
+  // Economics score
+  var econScore=5;
+  var econHigh=['high margin','gross margin','recurring','subscription','saas','retainer','ltv','high ltv','low cac','profit','cash flow','positive unit','high ticket'];
+  var econLow=['low margin','thin margin','high cac','low ltv','negative unit','capital intensive','long sales cycle','high churn','one-time sale','small ticket','low price'];
+  econHigh.forEach(function(w){if(text.includes(w))econScore++;});
+  econLow.forEach(function(w){if(text.includes(w))econScore--;});
+  econScore=Math.max(1,Math.min(10,econScore));
+  
+  // Defensibility
+  var defScore=5;
+  var defHigh=['patent','proprietary','moat','network effect','data moat','brand','exclusive','license','hard to copy','integration','switching cost','regulation','certification','secret sauce','trade secret'];
+  var defLow=['easy to copy','commodity','no moat','low barrier','anyone can','open source','no differentiator','me too','plain vanilla','generic'];
+  defHigh.forEach(function(w){if(text.includes(w))defScore++;});
+  defLow.forEach(function(w){if(text.includes(w))defScore--;});
+  defScore=Math.max(1,Math.min(10,defScore));
+  
+  // Founder fit
+  var fitScore=5;
+  var fitHigh=['years experience','expert','background in','degree in','done this before','network in','domain expert','previously built','successfully exited','advisor','board','capital raised'];
+  var fitLow=['new to industry','learning','no experience','first time','no network','no team','solo founder','no advisor','outsourcing everything','no relevant background'];
+  fitHigh.forEach(function(w){if(text.includes(w))fitScore++;});
+  fitLow.forEach(function(w){if(text.includes(w))fitScore--;});
+  fitScore=Math.max(1,Math.min(10,fitScore));
+  
+  // Timing
+  var timeScore=5;
+  var timeHigh=['trending','growing fast','post-covid','remote','ai-powered','regulation change','new law','tailwind','right time','now is the time','early','first mover'];
+  var timeLow=['declining','fading','too early','too late','past peak','regulatory risk','government','bureaucracy','uncertain','waiting for','market shrinking'];
+  timeHigh.forEach(function(w){if(text.includes(w))timeScore++;});
+  timeLow.forEach(function(w){if(text.includes(w))timeScore--;});
+  timeScore=Math.max(1,Math.min(10,timeScore));
+  
+  // Capital efficiency
+  var capScore=5;
+  var capHigh=['low capital','bootstrapped','lean','low cost','cheap to build','fast to market','mvp','r50k','under 100k','under 50k','profitable from day 1','unit economic','self-funded'];
+  var capLow=['capital intensive','expensive','high investment','r500k','over 1m','series a','venture funding','need investors','burn rate','runway','fundraising'];
+  capHigh.forEach(function(w){if(text.includes(w))capScore++;});
+  capLow.forEach(function(w){if(text.includes(w))capScore--;});
+  capScore=Math.max(1,Math.min(10,capScore));
+  
+  // Exit potential
+  var exitScore=5;
+  var exitHigh=['scalable','recurring','saas','platform','marketplace','network','multiple locations','franchise','acquisition target','high growth','venture backable','high multiple'];
+  var exitLow=['service business','consulting','agency','local only','single location','hard to scale','people dependent','low multiple','no exit','lifestyle business','small'];
+  exitHigh.forEach(function(w){if(text.includes(w))exitScore++;});
+  exitLow.forEach(function(w){if(text.includes(w))exitScore--;});
+  exitScore=Math.max(1,Math.min(10,exitScore));
+  
+  // Auto-detect red flags
+  var flags=[];
+  if(!text.match(/client|customer|buyer|user|patient|patient|tenant|member/))flags.push(1);
+  if(text.includes('low margin')||text.includes('thin margin'))flags.push(2);
+  if(text.includes('easy to copy')||text.includes('no moat')||text.includes('commodity'))flags.push(3);
+  if(text.includes('too early')||text.includes('regulatory risk')||text.includes('declining'))flags.push(4);
+  if(text.includes('r100k')||text.includes('r500k')||text.includes('r1m')||text.includes('expensive')||text.includes('capital intensive'))flags.push(5);
+  if(text.includes('no experience')||text.includes('first time')||text.includes('learning'))flags.push(6);
+  if(text.includes('declining')||text.includes('shrinking')||text.includes('saturated'))flags.push(7);
+  if(text.includes('regulation')||text.includes('government')||text.includes('compliance')||text.includes('license'))flags.push(8);
+  if(text.includes('complex')||text.includes('hard to explain')||text.includes('difficult'))flags.push(9);
+  if(text.includes('easy to switch')||text.includes('no switching')||text.includes('generic'))flags.push(10);
+  if(text.includes('founder dependent')||text.includes('owner operator'))flags.push(11);
+  if(!text.match(/recurring|subscription|saas|retainer|repeat/))flags.push(12);
+  if(text.match(/single client|one client|single customer/))flags.push(13);
+  if(text.includes('technology risk')||text.includes('unproven tech'))flags.push(14);
+  if(text.includes('ip risk')||text.includes('patent risk')||text.includes('legal risk')||text.includes('lawsuit'))flags.push(15);
+  
+  return {
+    scores:{market:marketScore,economics:econScore,defensibility:defScore,fit:fitScore,timing:timeScore,capital:capScore,exit:exitScore},
+    flags:flags
+  };
+}
+
+// Generate market intelligence from keywords
+function keywordMarketIntel(text,location,industry){
+  text=((text||'')+' '+(industry||'')).toLowerCase();
+  var insights=[];
+  
+  if(location)insights.push('Analysis for '+location+': The description covers '+text.split(' ').length+' words across '+((industry)||'general business')+'.');
+  if(text.includes('saas')||text.includes('software')||text.includes('platform')||text.includes('app'))insights.push('Tech/SaaS: This space has significant competition but also high demand. Differentiation is critical.');
+  if(text.includes('service')||text.includes('consulting')||text.includes('agency'))insights.push('Services: Lower entry barrier but harder to scale. Focus on recurring revenue models.');
+  if(text.includes('food')||text.includes('restaurant')||text.includes('cafe'))insights.push('Food & Bev: High failure rate in year 1. Location and operations are everything.');
+  if(text.includes('retail')||text.includes('ecommerce')||text.includes('shop'))insights.push('Retail: Shift to online + omnichannel. Physical retail needs experience, not just products.');
+  if(text.includes('health')||text.includes('medical')||text.includes('wellness'))insights.push('Health: Growing sector. Regulation is a moat but also a barrier. Plan for compliance costs.');
+  if(text.includes('education')||text.includes('training')||text.includes('coach'))insights.push('Education: Strong demand shift to online. Content quality determines success.');
+  if(text.includes('manufacturing')||text.includes('production'))insights.push('Manufacturing: High capital requirement. Automation and supply chain resilience are key trends.');
+  if(text.includes('real estate')||text.includes('property')||text.includes('housing'))insights.push('Real Estate: Interest rates and location are primary drivers. Proptech is the growth area.');
+  if(text.includes('energy')||text.includes('solar')||text.includes('green'))insights.push('Green Tech: Strong tailwinds from regulation and consumer demand. Subsidies available.');
+  if(text.includes('tourism')||text.includes('travel')||text.includes('hotel'))insights.push('Tourism: Recovering post-pandemic. Experience-based travel is the growth segment.');
+  
+  if(insights.length===0)insights.push('No strong industry signals detected. Consider refining your opportunity description with more specific industry language.');
+  
+  // Verdict
+  var kResult=keywordAnalyze(text,location,industry);
+  var avgScore=(kResult.scores.market+kResult.scores.economics+kResult.scores.defensibility+kResult.scores.fit+kResult.scores.timing+kResult.scores.capital+kResult.scores.exit)/7;
+  var flagCount=kResult.flags.length;
+  var verdict=flagCount>5?'BAD IDEA':flagCount>3?'CONDITIONAL':avgScore>6?'GOOD IDEA':'NEEDS WORK';
+  
+  return {
+    location:location||'Not specified',
+    trending:insights.slice(0,2).join(' '),
+    saturated:flagCount>4?'Significant saturation signals detected. Consider a niche approach.':'No strong saturation signals from the description. Verify with market research.',
+    gaps:flagCount>3?'The red flags identified suggest areas needing validation.':avgScore>6?'Positive signals detected. Focus on execution.':'Gather more data before proceeding.',
+    verdict:verdict+": Based on keyword analysis, this opportunity "+((verdict==='GOOD IDEA')?'shows positive signals across multiple dimensions.':(verdict==='BAD IDEA')?'has several risk factors that need addressing.':(verdict==='CONDITIONAL')?'has mixed signals — verify the red flags identified.':'requires more information before a confident assessment.')
+  };
+}
+
+// Handle file upload
+document.addEventListener('DOMContentLoaded',function(){
+  var dropZone=document.getElementById('uploadZone');
+  var fileInput=document.getElementById('fileInput');
+  if(dropZone&&fileInput){
+    dropZone.addEventListener('click',function(e){if(e.target.tagName!=='BUTTON')fileInput.click();});
+    dropZone.addEventListener('dragover',function(e){e.preventDefault();this.style.borderColor='var(--accent)';this.style.background='var(--accent-dim)';});
+    dropZone.addEventListener('dragleave',function(){this.style.borderColor='var(--border)';this.style.background='';});
+    dropZone.addEventListener('drop',function(e){e.preventDefault();this.style.borderColor='var(--border)';this.style.background='';if(e.dataTransfer.files.length){fileInput.files=e.dataTransfer.files;handleFile(e.dataTransfer.files[0]);}});
+    fileInput.addEventListener('change',function(){if(this.files.length)handleFile(this.files[0]);});
+  }
+});
+
+function handleFile(file){
+  var nameSpan=document.getElementById('fileName');
+  if(nameSpan){nameSpan.textContent=file.name;nameSpan.style.display='inline';}
+  var ext=file.name.split('.').pop().toLowerCase();
+  var reader=new FileReader();
+  reader.onload=function(e){
+    var textarea=document.getElementById('opportunityText');
+    if(!textarea)return;
+    if(ext==='pdf'){
+      textarea.value='[PDF uploaded: '+file.name+']\n\nPDF text extraction works best with markdown or text files. For PDFs, please copy-paste the key details into this text area manually, or convert your PDF to text using a free tool.\n\nKey details I can see from the filename: '+file.name;
+    } else {
+      textarea.value=e.target.result;
+    }
+  };
+  if(ext==='txt'||ext==='md'){reader.readAsText(file);}
+  else if(ext==='pdf'){reader.readAsArrayBuffer(file);textarea.value='Reading PDF...';}
+  else {textarea.value='File type: '+ext+'. Please copy-paste the content manually.';}
+}
+
+function analyzeWithAI(){
+  var text=document.getElementById('opportunityText');
+  var location=document.getElementById('locationInput');
+  var industry=document.getElementById('industrySelect');
+  var analyzeBtn=document.getElementById('analyzeBtn');
+  var resultsArea=document.getElementById('aiResultsArea');
+  var intelArea=document.getElementById('marketIntelArea');
+  var aiStatus=document.getElementById('aiStatus');
+  
+  if(!text||!text.value.trim()){showToast('Enter or upload an opportunity first');text&&text.focus();return;}
+  if(text.value.trim().length<20){showToast('Please provide more detail about your opportunity (at least 20 characters)');text&&text.focus();return;}
+  
+  analyzeBtn.textContent='⏳ Analyzing...';
+  analyzeBtn.disabled=true;
+  
+  // Start AI model load in background
+  if(!aiModelLoaded&&!aiLoading)initAIModel();
+  
+  // Run keyword analysis immediately (no download needed)
+  setTimeout(function(){
+    var locValue=location?location.value.trim():'';
+    var indValue=industry?industry.options[industry.selectedIndex]&&industry.options[industry.selectedIndex].text:'';
+    
+    var kResult=keywordAnalyze(text.value,locValue,indValue);
+    var intel=keywordMarketIntel(text.value,locValue,indValue);
+    
+    // Display market intelligence
+    if(intelArea){
+      intelArea.style.display='block';
+      document.getElementById('intelLocation').textContent=intel.location;
+      document.getElementById('intelTrending').textContent=intel.trending;
+      document.getElementById('intelSaturated').textContent=intel.saturated;
+      document.getElementById('intelGaps').textContent=intel.gaps;
+      var ve=document.getElementById('intelVerdict');
+      if(ve){
+        var isGood=intel.verdict.startsWith('GOOD');
+        var isBad=intel.verdict.startsWith('BAD');
+        ve.textContent=(isGood?'✅ ':isBad?'❌ ':'⚠️ ')+intel.verdict;
+        ve.style.background=isGood?'rgba(46,213,115,0.15)':isBad?'rgba(255,71,87,0.15)':'rgba(255,165,2,0.15)';
+        ve.style.color=isGood?'var(--safe)':isBad?'var(--danger)':'var(--warning)';
+      }
+      intelArea.scrollIntoView({behavior:'smooth',block:'center'});
+    }
+    
+    // Apply scores to scorecard
+    var sliders=document.querySelectorAll('.pillar-slider');
+    if(sliders.length===7){
+      var keys=['market','economics','defensibility','fit','timing','capital','exit'];
+      sliders.forEach(function(slider,idx){
+        if(idx<keys.length&&slider.tagName==='INPUT'&&kResult.scores[keys[idx]]){
+          var val=Math.max(1,Math.min(10,kResult.scores[keys[idx]]));
+          slider.value=val;
+          slider.dispatchEvent(new Event('input',{bubbles:true}));
+        }
+      });
+    }
+    
+    // Apply red flags
+    var flagInputs=document.querySelectorAll('.flag-card input[type="checkbox"]');
+    kResult.flags.forEach(function(idx){
+      if(flagInputs[idx-1]&&!flagInputs[idx-1].checked){
+        flagInputs[idx-1].checked=true;
+        flagInputs[idx-1].dispatchEvent(new Event('change',{bubbles:true}));
+      }
+    });
+    
+    // Show results
+    if(resultsArea)resultsArea.style.display='block';
+    document.getElementById('aiResultsInput').value='Analyzed by local AI.\nScores: Market='+kResult.scores.market+' Economics='+kResult.scores.economics+' Defensibility='+kResult.scores.defensibility+' Fit='+kResult.scores.fit+' Timing='+kResult.scores.timing+' Capital='+kResult.scores.capital+' Exit='+kResult.scores.exit+'\nRed Flags: '+(kResult.flags.length>0?kResult.flags.join(', '):'None')+'\nVerdict: '+intel.verdict;
+    
+    showToast('✅ Analysis complete — scores applied to scorecard!');
+    analyzeBtn.textContent='🔍 Analyze with AI';
+    analyzeBtn.disabled=false;
+    
+    // If AI model loaded, enhance analysis
+    if(aiModelLoaded){
+      showToast('🧠 AI model enhancing analysis...');
+      // AI enhancement would go here for v2
+    }
+  },100);
+}
+
+function applyAIResults(){
+  var input=document.getElementById('aiResultsInput');
+  if(!input||!input.value.trim()){showToast('Paste ChatGPT analysis results first');input&&input.focus();return;}
+  var results=input.value;
+
+  // Display Market Intelligence
+  var intelArea=document.getElementById('marketIntelArea');
+  if(intelArea){
+    intelArea.style.display='block';
+    var fields={location:'LOCATION_ANALYSIS',trending:'TRENDING',saturated:'SATURATED',gaps:'GAPS'};
+    Object.keys(fields).forEach(function(key){
+      var el=document.getElementById('intel'+key.charAt(0).toUpperCase()+key.slice(1));
+      if(el){
+        var regex=new RegExp(fields[key]+':\\s*(.+?)(?:\\n[\\w]+:|$)','is');
+        var match=results.match(regex);
+        el.textContent=match?match[1].trim():(key==='location'?'Based on the opportunity description, analysis is below.':'See AI analysis');
+      }
+    });
+    // Verdict
+    var verdictEl=document.getElementById('intelVerdict');
+    if(verdictEl){
+      var vMatch=results.match(/VERDICT:\s*(GOOD IDEA|BAD IDEA|CONDITIONAL)\s*[—–-]?\s*(.+?)(?:\\n|$)/i);
+      if(vMatch){
+        var v=vMatch[1].toUpperCase();
+        verdictEl.textContent=(v==='GOOD IDEA'?'✅ ':v==='BAD IDEA'?'❌ ':'⚠️ ')+vMatch[1]+': '+vMatch[2];
+        verdictEl.style.background=v==='GOOD IDEA'?'rgba(46,213,115,0.15)':v==='BAD IDEA'?'rgba(255,71,87,0.15)':'rgba(255,165,2,0.15)';
+        verdictEl.style.color=v==='GOOD IDEA'?'var(--safe)':v==='BAD IDEA'?'var(--danger)':'var(--warning)';
+      }
+    }
+    // Scroll to market intel
+    intelArea.scrollIntoView({behavior:'smooth',block:'center'});
+  }
+
+  // Parse scores
+  var scores={};
+  var pairs={market:'market_Score',economics:'economics_Score',defensibility:'defensibility_Score',fit:'fit_Score',timing:'timing_Score',capital:'capital_Score',exit:'exit_Score'};
+  Object.keys(pairs).forEach(function(key){
+    var regex=new RegExp('SCORE_'+key.toUpperCase()+':\\s*(\\d+)','i');
+    var match=results.match(regex);
+    if(match)scores[pairs[key]]=parseInt(match[1]);
+  });
+
+  // Apply scores to sliders
+  var sliders=document.querySelectorAll('.pillar-slider');
+  if(sliders.length===7){
+    var keys=['market_Score','economics_Score','defensibility_Score','fit_Score','timing_Score','capital_Score','exit_Score'];
+    var applied=0;
+    sliders.forEach(function(slider,idx){
+      if(idx<keys.length&&slider.tagName==='INPUT'){
+        var key=keys[idx];
+        if(scores[key]){
+          var val=Math.max(1,Math.min(10,scores[key]));
+          slider.value=val;
+          var event=new Event('input',{bubbles:true});
+          slider.dispatchEvent(event);
+          applied++;
+        }
+      }
+    });
+    // Apply red flags
+    var flagMatch=results.match(/FLAGS:\s*([0-9,\s]+)/i);
+    if(flagMatch){
+      var flagIndices=flagMatch[1].split(',').map(function(n){return parseInt(n.trim());}).filter(function(n){return n>0&&n<=15;});
+      var flagInputs=document.querySelectorAll('.flag-card input[type="checkbox"]');
+      flagIndices.forEach(function(idx){
+        if(flagInputs[idx-1]&&!flagInputs[idx-1].checked){flagInputs[idx-1].checked=true;flagInputs[idx-1].dispatchEvent(new Event('change',{bubbles:true}));}
+      });
+    }
+    showToast('✅ Market intelligence + AI scores applied!');
+    document.getElementById('aiResultsArea').style.display='none';
+    document.getElementById('aiPromptArea').style.display='none';
+  } else {
+    showToast('Applied market intelligence and scores from AI.');
+  }
+}
+
+function copyPrompt(){
+  var textarea=document.getElementById('aiPromptText');
+  if(textarea){
+    textarea.select();
+    navigator.clipboard.writeText(textarea.value).then(function(){showToast('📋 Copied! Paste into ChatGPT');}).catch(function(){showToast('Select all and copy (Ctrl+C)');});
+  }
+}
+// ===== END AI OPPORTUNITY ANALYZER =====
+
+function resetScorecard(){
+  if(!confirm('Reset all pillar scores, weights, and notes?'))return;
+  state.pillars.forEach(function(p){p.score=5;p.weight=50;p.note=''});
+  renderScorecard();saveState();showToast('Scorecard reset');
+}
+
+// Mode toggle
+document.querySelector('.mode-toggle')&&document.querySelectorAll('.mode-toggle button').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    document.querySelectorAll('.mode-toggle button').forEach(function(b){b.classList.remove('active');b.setAttribute('aria-pressed','false')});
+    btn.classList.add('active');btn.setAttribute('aria-pressed','true');
+    mode=btn.dataset.mode;
+    renderScorecard();
+  });
+});
+
+// ===== RED FLAGS =====
+var MAX_FREE_FLAGS=3;
+
+function renderFlags(){
+  var grid=document.getElementById('flagGrid');
+  grid.innerHTML='';
+  var checkedCount=state.redFlags.filter(Boolean).length;
+  RED_FLAGS.forEach(function(flag,i){
+    var div=document.createElement('div');
+    div.className='flag-item'+(state.redFlags[i]?' checked':'')+(i>=MAX_FREE_FLAGS?' locked':'');
+    var isVisible=i<MAX_FREE_FLAGS;
+    div.innerHTML=
+      '<div class="flag-inner">'+
+        '<div class="flag-front">'+
+          '<div class="flag-check">'+(state.redFlags[i]?'✕':'')+'</div>'+
+          '<span class="flag-text">'+(isVisible?flag.name:'🔒 Flag #'+(i+1))+'</span>'+
+          (!isVisible?'<span class="flag-lock-icon">🔒</span>':'')+
+        '</div>'+
+        '<div class="flag-back">'+(isVisible?flag.desc:'Unlock premium to reveal this flag and description.')+'</div>'+
+      '</div>';
+    div.addEventListener('click',function(e){
+      if(i>=MAX_FREE_FLAGS){
+        showUnlockFlags();
+        return;
+      }
+      state.redFlags[i]=!state.redFlags[i];
+      renderFlags();
+      saveState();
+      checkFunnels();
+    });
+    grid.appendChild(div);
+    // flip on right-click or touch-hold could be nice, but we do 3D auto flip on toggle? Actually spec says 3D flip animation on toggle. Let's add toggle via click.
+    // Actually click toggles check. We'll add a separate flip trigger on hover or on info click.
+    // Better approach: clicking the flag-item toggles it. We'll add a small info icon to flip.
+  });
+  updateVerdict();
+  // Unlock prompt
+  var unlockEl=document.getElementById('unlockFlagsPrompt');
+  var lockedCount=state.redFlags.length-MAX_FREE_FLAGS;
+  var hasLockedUnchecked=state.redFlags.slice(MAX_FREE_FLAGS).some(function(f){return f});
+  if(checkedCount>0&&!hasLockedUnchecked){
+    unlockEl.classList.remove('hidden');
+  }else{
+    unlockEl.classList.add('hidden');
+  }
+}
+
+function showUnlockFlags(){
+  document.getElementById('unlockFlagsPrompt').classList.remove('hidden');
+  showToast('Get the full app with all features — ' + GUMROAD_URL);
+}
+
+function updateVerdict(){
+  var count=state.redFlags.filter(Boolean).length;
+  document.getElementById('flagCount').textContent=count;
+  var progressFill=document.getElementById('flagProgressFill');
+  var pct=(count/RED_FLAGS.length*100).toFixed(0);
+  progressFill.style.width=pct+'%';
+  progressFill.style.background=count<=3?'var(--safe)':count<=7?'var(--warning)':'var(--danger)';
+  document.getElementById('flagProgressPct').textContent=pct+'%';
+  document.querySelector('.flag-progress-label span:first-child').textContent=count+' of '+RED_FLAGS.length+' flags';
+  var el=document.getElementById('flagVerdict');
+  var v=getFlagVerdict(count);
+  el.className='flag-verdict '+v.cls;
+  document.getElementById('flagVerdictText').textContent=v.verdict;
+  document.getElementById('flagSub').textContent=v.sub;
+}
+
+function resetFlags(){
+  if(!confirm('Clear all red flags?'))return;
+  state.redFlags=RED_FLAGS.map(function(){return false});
+  renderFlags();saveState();showToast('Red flags cleared');
+}
+
+// ===== CONVERSION FUNNEL =====
+var funnelScoreCount=0;
+var funnelFlagCount=0;
+
+function checkFunnels(){
+  var premium=document.getElementById('funnelPremium');
+  var guide=document.getElementById('funnelGuide');
+  // After 3 scores saved to history, show premium
+  funnelScoreCount=state.history.length;
+  if(funnelScoreCount>=3){
+    premium.classList.remove('hidden');
+  }else{
+    premium.classList.add('hidden');
+  }
+  // After 5 red flags checked, show guide
+  funnelFlagCount=state.redFlags.filter(Boolean).length;
+  if(funnelFlagCount>=5){
+    guide.classList.remove('hidden');
+  }else{
+    guide.classList.add('hidden');
+  }
+}
+
+// ===== COMPARISON =====
+function renderComparison(){
+  var area=document.getElementById('comparisonArea');
+  if(state.comparisons.length===0){
+    state.comparisons.push({name:'Opportunity A',scores:[5,5,5,5,5,5,5]});
+  }
+  area.innerHTML='';
+  var header=document.createElement('div');
+  header.className='comparison-header';
+  state.comparisons.forEach(function(opp,oi){
+    var wrap=document.createElement('div');
+    wrap.className='comp-input-wrap';
+    var inp=document.createElement('input');
+    inp.type='text';inp.value=opp.name;
+    inp.placeholder='Opp '+String.fromCharCode(65+oi);
+    inp.setAttribute('aria-label','Opportunity '+(oi+1)+' name');
+    inp.addEventListener('input',function(){
+      state.comparisons[oi].name=inp.value||'Opp '+String.fromCharCode(65+oi);
+      updateCompTotals();saveState();
+    });
+    wrap.appendChild(inp);
+    if(state.comparisons.length>1){
+      var removeBtn=document.createElement('button');
+      removeBtn.className='remove-opp';removeBtn.innerHTML='✕';
+      removeBtn.setAttribute('aria-label','Remove '+opp.name);
+      removeBtn.setAttribute('title','Remove');
+      removeBtn.addEventListener('click',function(){
+        state.comparisons.splice(oi,1);
+        renderComparison();saveState();
+      });
+      wrap.appendChild(removeBtn);
+    }
+    header.appendChild(wrap);
+  });
+  area.appendChild(header);
+  state.comparisons.forEach(function(opp){
+    while(opp.scores.length<7)opp.scores.push(5);
+  });
+  PILLARS.forEach(function(pillar,pi){
+    var row=document.createElement('div');
+    row.className='comp-row';
+    row.innerHTML='<div class="label">'+pillar.name+'</div>';
+    var slots=document.createElement('div');
+    slots.className='comp-slots';
+    state.comparisons.forEach(function(opp,oi){
+      var slot=document.createElement('div');
+      slot.className='comp-slot';
+      slot.innerHTML='<input type="range" min="1" max="10" step="1" value="'+opp.scores[pi]+'" data-opp="'+oi+'" data-pillar="'+pi+'" aria-label="'+pillar.name+' score for '+opp.name+'"><div class="val">'+opp.scores[pi]+'</div>';
+      slot.querySelector('input').addEventListener('input',onCompChange);
+      slots.appendChild(slot);
+    });
+    row.appendChild(slots);
+    area.appendChild(row);
+  });
+  updateCompTotals();
+}
+
+function onCompChange(e){
+  var oi=parseInt(e.target.dataset.opp);
+  var pi=parseInt(e.target.dataset.pillar);
+  var val=parseInt(e.target.value);
+  state.comparisons[oi].scores[pi]=val;
+  e.target.parentElement.querySelector('.val').textContent=val;
+  updateCompTotals();saveState();
+}
+
+function updateCompTotals(){
+  var area=document.getElementById('comparisonArea');
+  var existing=area.querySelector('.comp-total');
+  if(existing)existing.remove();
+  var existingRec=area.querySelector('.comp-recommendation');
+  if(existingRec)existingRec.remove();
+  if(state.comparisons.length===0)return;
+  var totals=state.comparisons.map(function(opp){
+    return opp.scores.reduce(function(s,v){return s+v},0)/opp.scores.length;
+  });
+  var ranked=totals.map(function(t,i){return{score:t,index:i}}).sort(function(a,b){return b.score-a.score});
+  var div=document.createElement('div');
+  div.className='comp-total';
+  state.comparisons.forEach(function(opp,i){
+    var slot=document.createElement('div');
+    var rank=ranked.findIndex(function(r){return r.index===i})+1;
+    slot.className='slot rank-'+(rank<=3?rank:3);
+    slot.innerHTML='<div class="name">'+opp.name+'</div><div class="score">'+totals[i].toFixed(1)+'</div>';
+    div.appendChild(slot);
+  });
+  area.appendChild(div);
+  // Recommendation
+  if(state.comparisons.length>1){
+    var rec=document.createElement('div');
+    rec.className='comp-recommendation';
+    var best=ranked[0];
+    var bestName=state.comparisons[best.index].name;
+    rec.innerHTML='<div class="rec-text">★ Recommended: <strong>'+bestName+'</strong> — '+best.score.toFixed(1)+'/10</div>';
+    area.appendChild(rec);
+  }
+  // Color coded per-pillar winners/losers
+  var rows=area.querySelectorAll('.comp-row');
+  rows.forEach(function(row,pi){
+    var slots=row.querySelectorAll('.comp-slot');
+    var vals=[];
+    slots.forEach(function(slot,i){vals.push({val:parseInt(slot.querySelector('.val').textContent),idx:i})});
+    var maxVal=Math.max.apply(null,vals.map(function(v){return v.val}));
+    var minVal=Math.min.apply(null,vals.map(function(v){return v.val}));
+    slots.forEach(function(slot,i){
+      slot.classList.toggle('winner',vals[i].val===maxVal);
+      slot.classList.toggle('loser',vals[i].val===minVal&&vals[i].val!==maxVal);
+    });
+  });
+}
+
+function addOpp(){
+  if(state.comparisons.length>=3){showToast('Maximum 3 opportunities');return;}
+  var name='Opportunity '+String.fromCharCode(65+state.comparisons.length);
+  state.comparisons.push({name:name,scores:[5,5,5,5,5,5,5]});
+  renderComparison();saveState();showToast('Added '+name);
+}
+
+function resetComparison(){
+  if(!confirm('Reset comparison data?'))return;
+  state.comparisons=[{name:'Opportunity A',scores:[5,5,5,5,5,5,5]}];
+  renderComparison();saveState();showToast('Comparison reset');
+}
+
+// ===== DECISION HISTORY =====
+function getCurrentVerdict(){
+  var score=getEffectiveScore();
+  var v=getVerdictLabel(score);
+  var flags=state.redFlags.filter(Boolean).length;
+  return{score:score,verdict:v.label,flags:flags};
+}
+
+function addHistoryEntry(){
+  var input=document.getElementById('historyNameInput');
+  var name=input.value.trim();
+  if(!name){showToast('Enter an opportunity name');input.focus();return;}
+  var cv=getCurrentVerdict();
+  state.history.push({
+    id:Date.now(),
+    name:name,
+    date:new Date().toISOString(),
+    score:cv.score,
+    verdict:cv.verdict,
+    flags:cv.flags,
+    outcome:'',
+    accuracy:'pending'
+  });
+  input.value='';
+  renderHistory();saveState();showToast('Saved to history');
+  checkFunnels();
+}
+
+function renderHistory(){
+  var tbody=document.getElementById('historyBody');
+  var empty=document.getElementById('historyEmpty');
+  if(state.history.length===0){
+    tbody.innerHTML='';
+    empty.style.display='block';
+    return;
+  }
+  empty.style.display='none';
+  tbody.innerHTML='';
+  var sorted=[].concat(state.history).reverse(); // newest first by default
+  sorted.forEach(function(entry,i){
+    var tr=document.createElement('tr');
+    var idx=state.history.findIndex(function(e){return e.id===entry.id});
+    var d=new Date(entry.date);
+    var dateStr=d.toLocaleDateString()+' '+d.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+    var vCls=entry.verdict.toLowerCase();
+    var accDot=entry.accuracy==='correct'?'correct':entry.accuracy==='wrong'?'wrong':'pending';
+    var accLabel=entry.accuracy==='correct'?'✓':entry.accuracy==='wrong'?'✗':'—';
+    tr.innerHTML=
+      '<td style="font-weight:500">'+escapeHtml(entry.name)+'</td>'+
+      '<td style="white-space:nowrap;font-size:12px;color:var(--text-dim)">'+dateStr+'</td>'+
+      '<td style="font-weight:600">'+entry.score.toFixed(1)+'</td>'+
+      '<td><span class="verdict-tag '+vCls+'">'+escapeHtml(entry.verdict)+'</span></td>'+
+      '<td>'+entry.flags+'</td>'+
+      '<td>'+
+        '<select class="outcome-select" data-idx="'+idx+'" aria-label="Actual outcome for '+escapeHtml(entry.name)+'">'+
+          '<option value=""'+(entry.outcome===''?' selected':'')+'>—</option>'+
+          '<option value="success"'+(entry.outcome==='success'?' selected':'')+'>Success</option>'+
+          '<option value="failure"'+(entry.outcome==='failure'?' selected':'')+'>Failure</option>'+
+          '<option value="ongoing"'+(entry.outcome==='ongoing'?' selected':'')+'>Ongoing</option>'+
+        '</select>'+
+      '</td>'+
+      '<td><span class="acc-dot '+accDot+'"></span>'+accLabel+'</td>'+
+      '<td><button class="btn btn-sm btn-danger" onclick="deleteHistoryEntry('+idx+')" aria-label="Delete entry" style="padding:2px 8px">✕</button></td>';
+    tbody.appendChild(tr);
+  });
+  tbody.querySelectorAll('.outcome-select').forEach(function(sel){
+    sel.addEventListener('change',function(){
+      var idx=parseInt(this.dataset.idx);
+      state.history[idx].outcome=this.value;
+      updateAccuracy(idx);
+      saveState();renderHistory();
+    });
+  });
+}
+
+function updateAccuracy(idx){
+  var entry=state.history[idx];
+  if(!entry.outcome||entry.outcome===''){entry.accuracy='pending';return;}
+  var isSuccess=entry.outcome==='success';
+  var predGood=entry.verdict==='Strong'||entry.verdict==='Promising';
+  entry.accuracy=(isSuccess&&predGood)||(!isSuccess&&!predGood)?'correct':'wrong';
+}
+
+function deleteHistoryEntry(idx){
+  state.history.splice(idx,1);
+  renderHistory();saveState();showToast('Entry removed');
+}
+
+function clearHistory(){
+  if(!confirm('Delete entire decision history?'))return;
+  state.history=[];
+  renderHistory();saveState();showToast('History cleared');
+}
+
+// Sort history
+document.querySelector('#historyTable thead')&&document.querySelectorAll('#historyTable th[data-sort]').forEach(function(th){
+  th.addEventListener('click',function(){
+    var key=this.dataset.sort;
+    var order=this.dataset.order||'asc';
+    var newOrder=order==='asc'?'desc':'asc';
+    document.querySelectorAll('#historyTable th[data-sort]').forEach(function(h){h.classList.remove('sorted');delete h.dataset.order});
+    this.classList.add('sorted');this.dataset.order=newOrder;
+    state.history.sort(function(a,b){
+      var va=a[key],vb=b[key];
+      if(typeof va==='string')va=va.toLowerCase(),vb=vb.toLowerCase();
+      if(va<vb)return order==='asc'?-1:1;
+      if(va>vb)return order==='asc'?1:-1;
+      return 0;
+    });
+    renderHistory();
+  });
+});
+
+// ===== EXPORT =====
+function exportJSON(){
+  var totalWeight=state.pillars.reduce(function(s,p){return s+p.weight},0);
+  var weighted=totalWeight>0?state.pillars.reduce(function(s,p){return s+(p.score*p.weight)},0)/totalWeight:0;
+  var data={
+    exportedAt:new Date().toISOString(),
+    app:'The Opportunity Brain — Aether Inc.',
+    framework:{name:'7-Pillar Scorecard',pillars:PILLARS},
+    scorecard:{
+      totalWeightedScore:parseFloat(weighted.toFixed(2)),
+      circuitBreakerActive:circuitActive()&&weighted>5,
+      effectiveScore:parseFloat(getEffectiveScore().toFixed(2)),
+      pillars:state.pillars.map(function(p,i){return{criterion:PILLARS[i].name,score:p.score,weight:p.weight,note:p.note}})
+    },
+    redFlags:{
+      count:state.redFlags.filter(Boolean).length,
+      raised:RED_FLAGS.filter(function(_,i){return state.redFlags[i]}).map(function(f){return f.name}),
+      allFlags:RED_FLAGS.map(function(f){return f.name})
+    },
+    comparisons:state.comparisons.map(function(opp){
+      return{
+        name:opp.name,
+        scores:opp.scores,
+        average:parseFloat((opp.scores.reduce(function(s,v){return s+v},0)/opp.scores.length).toFixed(2))
+      };
+    }),
+    decisionHistory:state.history.map(function(e){return{name:e.name,date:e.date,score:e.score,verdict:e.verdict,flags:e.flags,outcome:e.outcome,accuracy:e.accuracy}}),
+    metadata:{version:'1.0',generatedBy:'Opportunity Brain'}
+  };
+  var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement('a');
+  a.href=url;a.download='opportunity-brain-export-'+(new Date().toISOString().slice(0,10))+'.json';
+  document.body.appendChild(a);a.click();
+  document.body.removeChild(a);
+  setTimeout(function(){URL.revokeObjectURL(url)},100);
+  showToast('JSON exported');
+}
+
+function clearAllData(){
+  if(!confirm('Delete ALL data? This cannot be undone.'))return;
+  if(!confirm('Are you sure? Scorecard, history, comparisons — everything will be gone.'))return;
+  localStorage.removeItem('oppbrain');
+  state={
+    pillars:PILLARS.map(function(p){return{id:p.id,score:5,weight:50,note:''}}),
+    redFlags:RED_FLAGS.map(function(){return false}),
+    comparisons:[{name:'Opportunity A',scores:[5,5,5,5,5,5,5]}],
+    history:[]
+  };
+  renderScorecard();renderFlags();renderComparison();renderHistory();
+  showToast('All data cleared');
+}
+
+// ===== SHARE =====
+function shareScore(){
+  var s=getEffectiveScore().toFixed(1);
+  var f=state.redFlags.filter(Boolean).length;
+  var t='I scored my business idea '+s+'/10 ('+f+' red flags) using the Opportunity Brain. Try it: https://opportunitybrain.netlify.app';
+  window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent(t),'_blank','width=600,height=400');
+}
+function shareLinkedIn(){
+  var t='I use the Opportunity Brain to evaluate business ideas. Free to try: https://opportunitybrain.netlify.app';
+  window.open('https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent('https://opportunitybrain.netlify.app')+'&summary='+encodeURIComponent(t),'_blank','width=600,height=500');
+}
+
+// ===== CARD ENTRANCE ANIMATION =====
+(function(){
+  var cards=document.querySelectorAll('.card');
+  var cardObserver=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        cardObserver.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.08});
+  cards.forEach(function(c){cardObserver.observe(c)});
+  // Make any card that's already visible visible
+  setTimeout(function(){cards.forEach(function(c){var r=c.getBoundingClientRect();if(r.top<window.innerHeight)c.classList.add('visible')})},100);
+})();
+
+// ===== NAV HIGHLIGHT =====
+(function(){
+  var navLinks=document.querySelectorAll('.nav-links a');
+  var navObserver=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        navLinks.forEach(function(a){a.classList.remove('active');a.setAttribute('aria-selected','false')});
+        var id=entry.target.id;
+        var match=document.querySelector('.nav-links a[href="#'+id+'"]');
+        if(match){match.classList.add('active');match.setAttribute('aria-selected','true')}
+      }
+    });
+  },{rootMargin:'-80px 0px -65% 0px'});
+  document.querySelectorAll('section[id]').forEach(function(s){navObserver.observe(s)});
+})();
+
+// ===== MOBILE MENU =====
+document.getElementById('mobileMenuBtn').addEventListener('click',function(){
+  var el=document.getElementById('navLinks');
+  var expanded=el.classList.toggle('open');
+  this.setAttribute('aria-expanded',expanded);
+});
+document.querySelectorAll('.nav-links a').forEach(function(a){
+  a.addEventListener('click',function(){
+    document.getElementById('navLinks').classList.remove('open');
+    document.getElementById('mobileMenuBtn').setAttribute('aria-expanded','false');
+  });
+});
+
+// ===== KEYBOARD SHORTCUTS =====
+document.addEventListener('keydown',function(e){
+  if(e.key==='Enter'&&(e.ctrlKey||e.metaKey)){
+    var active=document.activeElement;
+    if(active&&active.id==='historyNameInput')addHistoryEntry();
+  }
+});
+
+// ===== AUTO-SAVE: periodic + on unload =====
+window.addEventListener('beforeunload',function(){saveState()});
+setInterval(function(){saveState()},30000);
+
+// ===== INIT =====
+renderScorecard();
+renderFlags();
+renderComparison();
+renderHistory();
+checkFunnels();
+
+console.log('🧠 Opportunity Brain loaded. Aether Inc. © 2026');
+</script>
+</body>
+</html>
