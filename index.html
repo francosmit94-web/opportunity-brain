@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#0a1628">
 <meta name="description" content="Score Any Business Opportunity in 5 Minutes. The Opportunity Brain — a systematic 7-pillar framework for evaluating, comparing, and tracking business opportunities.">
 <link rel="manifest" href="data:application/json,{}" id="manifestPlaceholder">
-<title>The Opportunity Brain — Aether Inc.</title>
+<title>The Opportunity Brain — Aether</title>
 <script src="https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.1/dist/transformers.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -691,15 +691,6 @@ footer p:first-child{margin-bottom:4px}
       <div class="sub" id="flagSub">Select red flags below</div>
     </div>
     <div class="flag-grid" id="flagGrid" role="group" aria-label="Red flag list"></div>
-    <div class="unlock-prompt hidden" id="unlockFlagsPrompt">
-      <p>🔒 <strong>23 Red Flags</strong> — you've seen the first 3.</p>
-      <p>Unlock the full detector and get:</p>
-      <p style="font-size:13px;color:var(--text-dim);margin:6px 0 12px">• All 23 flags • Verdict system • Priority ranking • Export</p>
-      <div class="price" id="unlockFlagsPrice">$29</div>
-      <a href="https://francosmith4.gumroad.com/l/cdaoh" target="_blank" class="btn btn-premium" style="text-decoration:none;color:white;padding:10px 24px;border-radius:8px;font-weight:600;display:inline-block;background:linear-gradient(135deg,var(--accent),#0d9488)">Unlock All Features →</a>
-      <p style="font-size:12px;color:var(--text-muted);margin-top:4px">One-time. Lifetime access.</p>
-      <button class="btn btn-primary" style="margin-top:12px;font-size:14px;padding:10px 28px" onclick="showToast('🔓 Premium unlocked — thank you!')">Unlock Premium →</button>
-    </div>
   </section>
 
   <!-- COMPARISON -->
@@ -778,29 +769,6 @@ footer p:first-child{margin-bottom:4px}
     </p>
   </section>
 
-  <!-- CONVERSION FUNNEL: Premium CTA -->
-  <section class="funnel hidden" id="funnelPremium">
-    <h3>🧠 Master Opportunity Evaluation</h3>
-    <p>Unlock unlimited scoring, full 23 red flags, priority comparison, and advanced analytics. Full web app access — installs on your phone, works offline.</p>
-    <span class="price">$29</span>
-    <span class="sub-price">One-time payment — lifetime access</span>
-    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-      <a href="https://francosmith4.gumroad.com/l/cdaoh" target="_blank" class="btn btn-premium" style="text-decoration:none;color:white;padding:12px 28px;border-radius:8px;font-weight:600;background:linear-gradient(135deg,var(--accent),#0d9488);font-size:14px">Get Premium →</a>
-      <button class="btn btn-ghost" onclick="document.getElementById('funnelPremium').classList.add('hidden')">Maybe later</button>
-    </div>
-  </section>
-
-  <section class="funnel hidden" id="funnelGuide">
-    <h3>📘 The Complete Opportunity Guide</h3>
-    <p>Get the full 23 red flag analysis methodology, case studies, and expert calibration templates.</p>
-    <span class="price">$12.50</span>
-    <span class="sub-price">Instant download — PDF + workbook</span>
-    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-      <a href="https://francosmith4.gumroad.com/l/fbsvbn" target="_blank" class="btn btn-primary" style="text-decoration:none;color:white;padding:12px 28px;border-radius:8px;font-weight:600;font-size:14px">Get the Full Guide →</a>
-      <button class="btn btn-ghost" onclick="document.getElementById('funnelGuide').classList.add('hidden')">Maybe later</button>
-    </div>
-  </section>
-
   <!-- BOTTOM CTA -->
   <section class="funnel" id="funnelBottom">
     <h3>Ready to Make Smarter Decisions?</h3>
@@ -814,11 +782,9 @@ footer p:first-child{margin-bottom:4px}
 
 <footer role="contentinfo">
   <p>Decision support tool. Not financial advice.</p>
-  <p>Aether Inc. © 2026. All rights reserved. The Opportunity Brain.</p>
+  <p>Aether © 2026. All rights reserved. The Opportunity Brain.</p>
 <p style="margin-top:4px;font-size:11px;color:var(--text-muted)">
   <a href="https://github.com/francosmit94-web/opportunity-brain" target="_blank" style="color:var(--accent);text-decoration:none">🐙 GitHub</a>
-  <span style="margin:0 6px">·</span>
-  <a href="https://francosmith4.gumroad.com/l/cdaoh" target="_blank" style="color:var(--accent);text-decoration:none">⭐ Premium</a>
 </p>
   <p style="margin-top:8px;font-size:11px;color:var(--text-muted)">Built with ☕ and <span style="color:var(--accent)">◆</span> by the Aether team.</p>
 </footer>
@@ -881,8 +847,6 @@ const RED_FLAGS=[
 ];
 
 // ===== STATE =====
-const GUMROAD_URL = 'https://francosmith4.gumroad.com/l/cdaoh';
-const GUMROAD_PREMIUM = GUMROAD_URL + '?option=premium';
 var state=loadState();
 if(!state){
   state={
@@ -1534,7 +1498,7 @@ document.querySelector('.mode-toggle')&&document.querySelectorAll('.mode-toggle 
 });
 
 // ===== RED FLAGS =====
-var MAX_FREE_FLAGS=3;
+var MAX_FREE_FLAGS=Infinity;
 
 function renderFlags(){
   var grid=document.getElementById('flagGrid');
@@ -1554,10 +1518,6 @@ function renderFlags(){
         '<div class="flag-back">'+(isVisible?flag.desc:'Unlock premium to reveal this flag and description.')+'</div>'+
       '</div>';
     div.addEventListener('click',function(e){
-      if(i>=MAX_FREE_FLAGS){
-        showUnlockFlags();
-        return;
-      }
       state.redFlags[i]=!state.redFlags[i];
       renderFlags();
       saveState();
@@ -1569,20 +1529,6 @@ function renderFlags(){
     // Better approach: clicking the flag-item toggles it. We'll add a small info icon to flip.
   });
   updateVerdict();
-  // Unlock prompt
-  var unlockEl=document.getElementById('unlockFlagsPrompt');
-  var lockedCount=state.redFlags.length-MAX_FREE_FLAGS;
-  var hasLockedUnchecked=state.redFlags.slice(MAX_FREE_FLAGS).some(function(f){return f});
-  if(checkedCount>0&&!hasLockedUnchecked){
-    unlockEl.classList.remove('hidden');
-  }else{
-    unlockEl.classList.add('hidden');
-  }
-}
-
-function showUnlockFlags(){
-  document.getElementById('unlockFlagsPrompt').classList.remove('hidden');
-  showToast('Get the full app with all features — ' + GUMROAD_URL);
 }
 
 function updateVerdict(){
@@ -1611,24 +1557,7 @@ function resetFlags(){
 var funnelScoreCount=0;
 var funnelFlagCount=0;
 
-function checkFunnels(){
-  var premium=document.getElementById('funnelPremium');
-  var guide=document.getElementById('funnelGuide');
-  // After 3 scores saved to history, show premium
-  funnelScoreCount=state.history.length;
-  if(funnelScoreCount>=3){
-    premium.classList.remove('hidden');
-  }else{
-    premium.classList.add('hidden');
-  }
-  // After 5 red flags checked, show guide
-  funnelFlagCount=state.redFlags.filter(Boolean).length;
-  if(funnelFlagCount>=5){
-    guide.classList.remove('hidden');
-  }else{
-    guide.classList.add('hidden');
-  }
-}
+function checkFunnels(){}
 
 // ===== COMPARISON =====
 function renderComparison(){
@@ -1873,7 +1802,7 @@ function exportJSON(){
   var weighted=totalWeight>0?state.pillars.reduce(function(s,p){return s+(p.score*p.weight)},0)/totalWeight:0;
   var data={
     exportedAt:new Date().toISOString(),
-    app:'The Opportunity Brain — Aether Inc.',
+    app:'The Opportunity Brain — Aether',
     framework:{name:'7-Pillar Scorecard',pillars:PILLARS},
     scorecard:{
       totalWeightedScore:parseFloat(weighted.toFixed(2)),
@@ -1996,7 +1925,7 @@ renderComparison();
 renderHistory();
 checkFunnels();
 
-console.log('🧠 Opportunity Brain loaded. Aether Inc. © 2026');
+console.log('🧠 Opportunity Brain loaded. Aether © 2026');
 </script>
 </body>
 </html>

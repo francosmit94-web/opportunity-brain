@@ -2,7 +2,6 @@
 
 **Score any business idea in 5 minutes. Privacy-first. Runs entirely in your browser. No data leaves your device.**
 
-[![Live Demo](https://img.shields.io/badge/Live_Demo-opportunitybrain.netlify.app-00d4aa?style=flat-square)](https://opportunitybrain.netlify.app)
 [![MIT License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
 
 ---
@@ -18,25 +17,13 @@
 - **Privacy-First** — All data stays in your browser. No accounts, no servers, no tracking.
 - **PWA** — Installs on mobile and desktop. Works offline.
 
-## Live Demo
-
-[**opportunitybrain.netlify.app**](https://opportunitybrain.netlify.app)
-
 ## Case Study
 
 [**Should Elon Musk Have Bought Twitter?**](case-study-twitter.html) — A full 7-pillar analysis of the $44B acquisition. Score: 3.8/10 — AVOID. 11 red flags detected.
 
-## Premium Features
-
-| Product | Price | What You Get |
-|---------|-------|-------------|
-| **Full Web App Access** | [$29](https://francosmith4.gumroad.com/l/cdaoh) | All features unlocked, unlimited evaluations, comparison matrix, decision history, full 23 red flags |
-| **Custom Business Evaluation** | [$197](https://francosmith4.gumroad.com/l/wdpsp) | Personalized 7-pillar report for your specific opportunity. Delivered within 48 hours via email. |
-| **PDF Methodology Guide** | [$12.50](https://francosmith4.gumroad.com/l/fbsvbn) | Complete guide with calibration, case studies, and templates |
-
 ## Quick Start
 
-1. Open https://opportunitybrain.netlify.app
+1. Serve the files locally (see Self-Hosting below) and open the page
 2. Optionally describe your opportunity in the AI Analyzer
 3. Score each of the 7 pillars (1-10)
 4. Check red flags
@@ -68,7 +55,6 @@ python3 -m http.server 8080
 
 MIT — free to use, modify, and distribute.
 
-## Support
+## Author
 
-- [Premium Products](https://francosmith4.gumroad.com/)
-- Created by [Aether Inc.](https://aetherwave.io) — Cape Town, South Africa
+Built by Aether and operated by Franco Smit — Cape Town, South Africa
