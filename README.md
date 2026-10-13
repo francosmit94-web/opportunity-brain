@@ -1,60 +1,45 @@
-# Opportunity Brain — AI-Powered Business Opportunity Evaluator
+# Opportunity Brain
 
-**Score any business idea in 5 minutes. Privacy-first. Runs entirely in your browser. No data leaves your device.**
+A free scorecard for weighing a business idea. It is a single web page, published by the Aether Project.
 
-[![MIT License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
+Live: https://aether-project-hq.onrender.com/tools/opportunity-brain/
 
----
+## What it does
 
-## Features
+- You rate the idea on seven criteria. Each has a rating from 1 to 10 and a weight from 0 to 100.
+- You tick whichever of 23 risk flags apply.
+- You can save up to five ideas and compare them side by side.
 
-- **7-Pillar Scorecard** — Market Demand, Unit Economics, Defensibility, Founder Fit, Timing, Capital Efficiency, Exit Potential
-- **23 Red Flag Detector** — Flip-to-reveal 3D cards with detailed risk explanations
-- **Comparison Matrix** — Compare up to 5 opportunities side-by-side with auto-ranking
-- **Decision History** — Track outcomes and measure your decision accuracy over time
-- **AI-Powered Analysis** — Keyword engine runs instantly in-browser. Optional Transformers.js AI model for enhanced analysis.
-- **Market Intelligence** — Location-based market trend analysis and saturation detection
-- **Privacy-First** — All data stays in your browser. No accounts, no servers, no tracking.
-- **PWA** — Installs on mobile and desktop. Works offline.
+This is a self-assessment worked out from your own answers. It is not advice of any kind, and it is not market research.
 
-## Case Study
+## How the score is worked out
 
-[**Should Elon Musk Have Bought Twitter?**](case-study-twitter.html) — A full 7-pillar analysis of the $44B acquisition. Score: 3.8/10 — AVOID. 11 red flags detected.
+Each of the seven criteria has a rating from 1 to 10 and a weight from 0 to 100.
 
-## Quick Start
+**Score = (sum of rating × weight) ÷ (sum of weights)**, rounded to one decimal place. With equal weights this is the plain average of your seven ratings.
 
-1. Serve the files locally (see Self-Hosting below) and open the page
-2. Optionally describe your opportunity in the AI Analyzer
-3. Score each of the 7 pillars (1-10)
-4. Check red flags
-5. Export or save to history
+One cap applies: if any criterion with a weight above zero is rated below 3, the score cannot be higher than 5.0. A very weak point is not averaged away by strong ones.
 
-## Self-Hosting
+If every weight is zero there is no score.
 
-1. Clone this repo
-2. Serve the files with any static HTTP server
-3. No build step required
+The word shown with the score only restates it: 8.0 or more is "Strong", 6.0 to 7.9 is "Promising", 4.0 to 5.9 is "Weak", below 4.0 is "Poor".
 
-```bash
-git clone https://github.com/francosmit94-web/opportunity-brain.git
-cd opportunity-brain
-python3 -m http.server 8080
-# Open http://localhost:8080
-```
+Risk flags are counted and shown next to the score. They do not change it.
 
-## Tech Stack
+## Your data
 
-- Vanilla HTML/CSS/JS — 0 dependencies, 0 build tools
-- ~2,000 lines single-file application
-- In-browser keyword analysis engine (no external API calls)
-- Optional Transformers.js model for enhanced AI analysis
-- PWA with service worker for offline support
-- Web standard APIs (localStorage, FileReader, Service Worker)
+Your answers and comparison list are saved in the browser's local storage, if the browser allows it, on that device only. Nothing is sent anywhere: the page makes no network requests and has no account, tracking or cookies. The "Clear my data" button on the page removes what was saved.
 
-## License
+## Running it yourself
 
-MIT — free to use, modify, and distribute.
+Open `index.html` in a browser. There is no build step and there are no dependencies.
 
-## Author
+The "all free tools" link in the page footer points one folder up, which exists on the live site but not in this repository.
 
-Built by Aether and operated by Franco Smit — Cape Town, South Africa
+## Tests
+
+Run `node --test` in this folder (needs Node.js; the tests run the same script the page runs).
+
+## Terms
+
+Free tool, provided as is, with no support. Licensed under the [MIT licence](LICENSE).
